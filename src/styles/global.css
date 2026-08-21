@@ -3434,7 +3434,10 @@ html[data-lang="bn"] .hero h1 {
 /* ---------- Footer v2: map backdrop, frosted panel, curved top ---------- */
 footer.site.footer-v2 {
   position: relative;
-  overflow: hidden;
+  /* clip sideways only, so the backdrop photo can rise above the footer's top edge */
+  overflow-x: clip;
+  overflow-y: visible;
+  --footer-img-up: 220px;
   margin-top: 40px;
   padding: 150px 0 28px;
   border-top: none;
@@ -3444,8 +3447,8 @@ footer.site.footer-v2 {
   position: absolute;
   left: 0;
   right: 0;
-  top: 0;
-  height: var(--footer-img-h, 70%);
+  top: calc(-1 * var(--footer-img-up));
+  height: calc(var(--footer-img-h, 70%) + var(--footer-img-up));
   z-index: 0;
   /* dissolve the top edge into the page background instead of a hard line */
   -webkit-mask-image: linear-gradient(
@@ -3519,6 +3522,7 @@ footer.site.footer-v2 {
 @media (max-width: 760px) {
   footer.site.footer-v2 {
     padding-top: 56px;
+    --footer-img-up: 120px;
   }
   .footer-panel {
     padding: 28px 22px 20px;
