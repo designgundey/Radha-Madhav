@@ -12,14 +12,14 @@ test.describe("homepage smoke test", () => {
     }
   });
 
-  test("lists six doctor cards (4 doctors + 2 reserved slots) and six health-wiki cards", async ({
+  test("lists six doctor cards (4 doctors + 2 reserved slots) and three health-wiki teasers", async ({
     page,
   }) => {
     await page.goto("/");
 
     await expect(page.locator("#doctors .doctor-card")).toHaveCount(6);
     await expect(page.locator("#doctors .doctor-card.slot")).toHaveCount(2);
-    await expect(page.locator("#wiki-grid .wiki-card")).toHaveCount(6);
+    await expect(page.locator("#wiki-grid .wiki-card")).toHaveCount(3);
   });
 
   test("call and directions links point somewhere real", async ({ page }) => {
@@ -93,5 +93,11 @@ test.describe("homepage smoke test", () => {
     await expect(page.locator(".team-card")).toHaveCount(6);
     await expect(page.locator(".founders .legacy-portrait")).toHaveCount(2);
     await expect(page.locator("#gallery .img-card")).toHaveCount(6);
+  });
+
+  test("health tips page carries the reels and the full wiki", async ({ page }) => {
+    await page.goto("/health-tips/");
+    await expect(page.locator("#videos .reel-card")).toHaveCount(4);
+    await expect(page.locator("#wiki-grid .wiki-card")).toHaveCount(6);
   });
 });

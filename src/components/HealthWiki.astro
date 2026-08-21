@@ -2,10 +2,17 @@
 import Icon from "./Icon.astro";
 import WikiCard from "./WikiCard.astro";
 import { wikiEntries } from "../data/wiki";
-import { getLang, useT } from "../i18n";
+import { getLang, localePath, useT } from "../i18n";
 
+interface Props {
+  /** Show only the first N cards (homepage teaser) and a link to the full page. */
+  limit?: number;
+}
+
+const { limit } = Astro.props;
 const lang = getLang(Astro.currentLocale);
 const t = useT(lang);
+const entries = limit ? wikiEntries.slice(0, limit) : wikiEntries;
 ---
 
 <section id="wiki">
@@ -26,8 +33,17 @@ const t = useT(lang);
     </div>
 
     <div class="grid-3" id="wiki-grid">
-      {wikiEntries.map((entry, i) => <WikiCard entry={entry} index={i} />)}
+      {entries.map((entry, i) => <WikiCard entry={entry} index={i} />)}
     </div>
+    {
+      limit && (
+        <div class="reviews-actions" data-reveal>
+          <a class="btn btn-ghost" href={localePath("/health-tips/#wiki", lang)}>
+            {t("wiki.all")} <Icon name="i-arrow" />
+          </a>
+        </div>
+      )
+    }
 
     <p class="disclaimer">
       यो जानकारी सामान्य सचेतनाका लागि मात्र हो, यो चिकित्सकको सल्लाहको विकल्प होइन। This

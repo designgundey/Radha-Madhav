@@ -1,0 +1,29 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import DoctorVideos from "../components/DoctorVideos.astro";
+import HealthWiki from "../components/HealthWiki.astro";
+import { site } from "../data/site";
+import { getLang, localePath, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+---
+
+<BaseLayout
+  title={`${t("tipsPage.title")} | ${site.name} | Mirik, Darjeeling`}
+  description={t("tipsPage.meta")}
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <a class="back-link" href={localePath("/#videos", lang)}>
+        <Icon name="i-arrow" />{t("doctorsPage.back")}
+      </a>
+      <p class="eyebrow">{t("tipsPage.title")}</p>
+      <h1>{t("tipsPage.h1")}</h1>
+      <p class="hero-sub" style="margin-inline:0; animation:none; opacity:1">{t("tipsPage.sub")}</p>
+    </div>
+  </section>
+  <DoctorVideos />
+  <HealthWiki />
+</BaseLayout>

@@ -131,6 +131,13 @@ export const ui = {
     "videos.sample": "sample",
     "nav.videos": "Health tips",
     "footer.credit": "Design and developed by",
+    "wiki.all": "All health tips",
+    "tipsPage.title": "Health tips",
+    "tipsPage.h1": "Health tips from our doctors and counter",
+    "tipsPage.sub":
+      "Short reels from the visiting doctors, and simple health-awareness notes in Nepali you can read or listen to.",
+    "tipsPage.meta":
+      "Health tips from Radhamadhav Medical Hall, Mirik: doctor video reels and Nepali health-awareness notes with tap-to-listen audio.",
     "wiki.eyebrow": "स्वास्थ्य सचेतना · Health wiki",
     "wiki.title": "सुन्नुहोस् वा पढ्नुहोस् · Listen or read",
     "wiki.sub":
@@ -327,6 +334,13 @@ export const ui = {
     "videos.sample": "नमुना",
     "nav.videos": "स्वास्थ्य सुझाव",
     "footer.credit": "डिजाइन र विकास",
+    "wiki.all": "सबै स्वास्थ्य सुझाव",
+    "tipsPage.title": "स्वास्थ्य सुझाव",
+    "tipsPage.h1": "हाम्रा डाक्टर र काउन्टरका स्वास्थ्य सुझाव",
+    "tipsPage.sub":
+      "आउने डाक्टरहरूका छोटा रिल, र नेपालीमा पढ्न वा सुन्न मिल्ने सरल स्वास्थ्य-सचेतना टिप्पणीहरू।",
+    "tipsPage.meta":
+      "राधामाधव मेडिकल हल, मिरिकका स्वास्थ्य सुझाव: डाक्टर भिडियो रिल र सुन्न मिल्ने नेपाली स्वास्थ्य-सचेतना टिप्पणी।",
     "wiki.eyebrow": "स्वास्थ्य सचेतना",
     "wiki.title": "सुन्नुहोस् वा पढ्नुहोस्",
     "wiki.sub":
@@ -522,6 +536,13 @@ export const ui = {
     "videos.sample": "নমুনা",
     "nav.videos": "স্বাস্থ্য টিপস",
     "footer.credit": "ডিজাইন ও ডেভেলপমেন্ট",
+    "wiki.all": "সব স্বাস্থ্য টিপস",
+    "tipsPage.title": "স্বাস্থ্য টিপস",
+    "tipsPage.h1": "আমাদের ডাক্তার ও কাউন্টারের স্বাস্থ্য টিপস",
+    "tipsPage.sub":
+      "আগত ডাক্তারদের ছোট রিল, আর নেপালি ভাষায় পড়া বা শোনা যায় এমন সহজ স্বাস্থ্য-সচেতনতা নোট।",
+    "tipsPage.meta":
+      "রাধামাধব মেডিক্যাল হল, মিরিকের স্বাস্থ্য টিপস: ডাক্তারের ভিডিও রিল ও শোনা যায় এমন নেপালি স্বাস্থ্য-সচেতনতা নোট।",
     "wiki.eyebrow": "স্বাস্থ্য সচেতনতা · নেপালি উইকি",
     "wiki.title": "শুনুন বা পড়ুন",
     "wiki.sub":
