@@ -6,7 +6,7 @@ export interface TimelineItem {
   text: L;
 }
 
-// The story of Dr. Swapan Kumar Kundu and Radha Madhav Medical Hall.
+// The story of Dr. Swapan Kumar Kundu, Pushpalata Gurung, Dr. Subhendu Kundu and the team.
 // Years marked "c." are approximate: confirm dates, names and events with the family
 // before publishing, and replace the stand-in portrait in public/images/dr-kundu.jpg.
 export const founder = {
@@ -16,9 +16,9 @@ export const founder = {
     bn: "ডা. স্বপন কুমার কুণ্ডু",
   } as L,
   role: {
-    en: "Founder. Physician to Mirik for five decades",
-    ne: "संस्थापक। पाँच दशकदेखि मिरिकका चिकित्सक",
-    bn: "প্রতিষ্ঠাতা। পাঁচ দশক ধরে মিরিকের চিকিৎসক",
+    en: "Co-founder. Physician to Mirik for five decades",
+    ne: "सह-संस्थापक। पाँच दशकदेखि मिरिकका चिकित्सक",
+    bn: "সহ-প্রতিষ্ঠাতা। পাঁচ দশক ধরে মিরিকের চিকিৎসক",
   } as L,
   photo: "/images/dr-kundu.jpg",
   photoIsPlaceholder: true,
@@ -29,9 +29,9 @@ export const founder = {
       bn: "প্রায় পঞ্চাশ বছর ধরে মিরিকে কেউ অসুস্থ হলে একটি নামই উচ্চারিত হয়েছে: ডা. স্বপন কুমার কুণ্ডু। শহরে আজকের ক্লিনিকগুলো আসার অনেক আগে থেকেই কৃষ্ণনগরে তাঁর দরজা চা-বাগানের শ্রমিক, ছাত্র, ব্যবসায়ী আর পর্যটক সবার জন্য খোলা ছিল।",
     },
     {
-      en: "Radha Madhav Medical Hall grew out of that practice. A doctor who saw patients every day knew exactly which medicines the hills needed and how hard they were to find. So the counter was stocked with them, kept genuine, and priced for the people who queued outside.",
-      ne: "राधा माधव मेडिकल हल त्यही अभ्यासबाट जन्मियो। हरेक दिन बिरामी हेर्ने डाक्टरलाई पहाडलाई कुन औषधि चाहिन्छ र ती पाउन कति गाह्रो छ भन्ने राम्ररी थाहा थियो। त्यसैले काउन्टरमा ती औषधि राखियो, असली राखियो, र बाहिर लाइन लाग्ने मानिसका लागि मूल्य तोकियो।",
-      bn: "রাধা মাধব মেডিক্যাল হল সেই প্র্যাকটিস থেকেই জন্ম নেয়। যে ডাক্তার প্রতিদিন রোগী দেখতেন, তিনি ঠিক জানতেন পাহাড়ের কোন ওষুধ দরকার আর তা পাওয়া কত কঠিন। তাই কাউন্টারে সেগুলোই রাখা হল, আসল রাখা হল, আর বাইরে লাইনে দাঁড়ানো মানুষের জন্য দাম রাখা হল।",
+      en: "He did not build it alone. Radha Madhav Medical Hall was started at the same time by Dr. Kundu and his wife, Pushpalata Gurung. While he saw patients, she ran the counter: the stock, the accounts, the credit book for families who could pay only after the tea-garden wages came in. The hall had two founders from its first day.",
+      ne: "उहाँले यो एक्लै बनाउनुभएन। राधा माधव मेडिकल हल डा. कुण्डु र उहाँकी श्रीमती पुष्पलता गुरुङले एकै समयमा सुरु गर्नुभयो। उहाँ बिरामी हेर्नुहुन्थ्यो, उहाँ काउन्टर चलाउनुहुन्थ्यो: स्टक, हिसाब, र चिया बगानको तलब आएपछि मात्र तिर्न सक्ने परिवारका लागि उधारो खाता। हलका पहिलो दिनदेखि नै दुई संस्थापक थिए।",
+      bn: "তিনি একা গড়েননি। রাধা মাধব মেডিক্যাল হল একই সময়ে শুরু করেন ডা. কুণ্ডু ও তাঁর স্ত্রী পুষ্পলতা গুরুং। তিনি রোগী দেখতেন, আর তিনি কাউন্টার সামলাতেন: স্টক, হিসাব, আর যে পরিবারগুলো চা-বাগানের মজুরি এলে তবেই দিতে পারত তাদের জন্য ধারের খাতা। প্রথম দিন থেকেই হলের দুজন প্রতিষ্ঠাতা ছিলেন।",
     },
     {
       en: "Health camps in the tea gardens, free check-ups on Sundays, medicines sent up to villages by whoever was heading that way. None of it was called community service at the time. It was simply how the hall worked, and it still is.",
@@ -46,18 +46,142 @@ export const founder = {
   } as L,
 };
 
+export const cofounder = {
+  name: { en: "Pushpalata Gurung", ne: "पुष्पलता गुरुङ", bn: "পুষ্পলতা গুরুং" } as L,
+  role: {
+    en: "Co-founder. The hands that ran the counter",
+    ne: "सह-संस्थापक। काउन्टर चलाउने हातहरू",
+    bn: "সহ-প্রতিষ্ঠাতা। যে হাত কাউন্টার চালাত",
+  } as L,
+  photo: "/images/pushpalata-gurung.jpg",
+  photoIsPlaceholder: true,
+  intro: [
+    {
+      en: "Pushpalata Gurung is the reason the hall felt like a home and not a dispensary. She knew every family by name, which child was due a vaccine, and which grandmother would forget her evening tablet unless it was counted into a paper fold for her.",
+      ne: "पुष्पलता गुरुङकै कारण हल डिस्पेन्सरी नभई घर जस्तो लाग्थ्यो। उहाँलाई हरेक परिवारको नाम, कुन बच्चाको खोप बाँकी छ, र कुन हजुरआमाले कागजमा पट्याएर नदिए साँझको चक्की बिर्सनुहुन्छ भन्ने थाहा थियो।",
+      bn: "পুষ্পলতা গুরুংয়ের জন্যই হলটা ডিসপেনসারি নয়, একটা বাড়ির মতো লাগত। তিনি প্রতিটি পরিবারকে নামে চিনতেন, কোন শিশুর টিকা বাকি, আর কোন ঠাকুমা কাগজে মুড়ে না দিলে সন্ধ্যার ট্যাবলেট ভুলে যাবেন।",
+    },
+    {
+      en: "In a hill town where Nepali, Bengali and Hindi are spoken in the same queue, she made sure nobody left the counter without understanding their medicine. That habit became the hall's rule, and it is still how the staff are trained.",
+      ne: "एउटै लाइनमा नेपाली, बंगाली र हिन्दी बोलिने पहाडी सहरमा उहाँले कोही पनि आफ्नो औषधि नबुझी काउन्टरबाट नफर्कियोस् भन्ने सुनिश्चित गर्नुभयो। त्यो बानी हलको नियम बन्यो, र कर्मचारीलाई अझै त्यसरी नै तालिम दिइन्छ।",
+      bn: "যে পাহাড়ি শহরে একই লাইনে নেপালি, বাংলা আর হিন্দি শোনা যায়, সেখানে তিনি নিশ্চিত করতেন কেউ যেন নিজের ওষুধ না বুঝে কাউন্টার ছেড়ে না যায়। সেই অভ্যাসই হলের নিয়ম হয়ে গেল, আর আজও কর্মীদের সেভাবেই শেখানো হয়।",
+    },
+  ] as L[],
+};
+
+export const custodian = {
+  name: { en: "Dr. Subhendu Kundu", ne: "डा. शुभेन्दु कुण्डु", bn: "ডা. শুভেন্দু কুণ্ডু" } as L,
+  role: {
+    en: "Runs the hall today, with a team of six",
+    ne: "आज छ जनाको टोलीसहित हल चलाउनुहुन्छ",
+    bn: "আজ ছয়জনের টিম নিয়ে হল চালান",
+  } as L,
+  photo: "/images/subhendu-kundu.jpg",
+  photoIsPlaceholder: false,
+  intro: [
+    {
+      en: "The counter is now in the care of Dr. Subhendu Kundu, who grew up behind it. He has kept what his parents built, genuine medicines and honest advice, and added what a new generation in Mirik expects: WhatsApp orders, home delivery, visiting specialists and doctor videos you can watch on your phone.",
+      ne: "काउन्टर अहिले डा. शुभेन्दु कुण्डुको हेरचाहमा छ, जो यसैको पछाडि हुर्कनुभयो। उहाँले आमाबुबाले बनाएको कुरा, असली औषधि र इमानदार सल्लाह, कायम राख्नुभएको छ, र मिरिकको नयाँ पुस्ताले अपेक्षा गर्ने कुरा थप्नुभएको छ: WhatsApp अर्डर, घरमै डेलिभरी, आउने विशेषज्ञ र फोनमा हेर्न मिल्ने डाक्टर भिडियो।",
+      bn: "কাউন্টার এখন ডা. শুভেন্দু কুণ্ডুর হাতে, যিনি এর পেছনেই বড় হয়েছেন। বাবা-মায়ের গড়া জিনিস, আসল ওষুধ আর সৎ পরামর্শ, তিনি ধরে রেখেছেন, আর যোগ করেছেন মিরিকের নতুন প্রজন্ম যা চায়: WhatsApp অর্ডার, হোম ডেলিভারি, আগত বিশেষজ্ঞ আর ফোনে দেখার মতো ডাক্তারের ভিডিও।",
+    },
+    {
+      en: "It is, in the end, a family of doctors. Medicine was the dinner-table conversation in the Kundu home, and the hall is where that conversation continues with the town: the same counter, the same care, passed from one generation of doctors to the next.",
+      ne: "अन्ततः यो डाक्टरहरूको परिवार हो। कुण्डु परिवारको खाना खाने टेबलको कुरा नै औषधि थियो, र हल त्यही कुरा सहरसँग जारी राख्ने ठाउँ हो: उही काउन्टर, उही हेरचाह, डाक्टरको एक पुस्ताबाट अर्को पुस्तामा हस्तान्तरण।",
+      bn: "শেষ পর্যন্ত এটা ডাক্তারদের এক পরিবার। কুণ্ডু বাড়িতে খাবার টেবিলের আলোচনাই ছিল চিকিৎসা, আর হলটা সেই আলোচনা শহরের সঙ্গে চালিয়ে যাওয়ার জায়গা: একই কাউন্টার, একই যত্ন, ডাক্তারদের এক প্রজন্ম থেকে পরের প্রজন্মে।",
+    },
+  ] as L[],
+};
+
+export interface StaffMember {
+  name: string;
+  role: L;
+  note: L;
+  photo: string;
+  photoIsPlaceholder: boolean;
+}
+
+// Replace "[Name]" and the stand-in photos with the real team.
+export const team: StaffMember[] = [
+  {
+    name: "[Name]",
+    role: { en: "Registered pharmacist", ne: "दर्ता फार्मासिस्ट", bn: "রেজিস্টার্ড ফার্মাসিস্ট" },
+    note: {
+      en: "Dispensing and dosage checks",
+      ne: "औषधि वितरण र मात्रा जाँच",
+      bn: "ওষুধ বিতরণ ও ডোজ যাচাই",
+    },
+    photo: "/images/staff-1.jpg",
+    photoIsPlaceholder: true,
+  },
+  {
+    name: "[Name]",
+    role: { en: "Counter in-charge", ne: "काउन्टर इन्चार्ज", bn: "কাউন্টার ইন-চার্জ" },
+    note: {
+      en: "Prescriptions and billing",
+      ne: "प्रेस्क्रिप्सन र बिलिङ",
+      bn: "প্রেসক্রিপশন ও বিলিং",
+    },
+    photo: "/images/staff-2.jpg",
+    photoIsPlaceholder: true,
+  },
+  {
+    name: "[Name]",
+    role: { en: "Compounder", ne: "कम्पाउन्डर", bn: "কম্পাউন্ডার" },
+    note: {
+      en: "Dressings, injections, BP and sugar checks",
+      ne: "ड्रेसिङ, इन्जेक्सन, BP र सुगर जाँच",
+      bn: "ড্রেসিং, ইনজেকশন, BP ও সুগার পরীক্ষা",
+    },
+    photo: "/images/staff-3.jpg",
+    photoIsPlaceholder: true,
+  },
+  {
+    name: "[Name]",
+    role: { en: "Stock and cold-chain", ne: "स्टक र कोल्ड-चेन", bn: "স্টক ও কোল্ড-চেইন" },
+    note: {
+      en: "Inventory, expiry and insulin storage",
+      ne: "भण्डार, म्याद र इन्सुलिन भण्डारण",
+      bn: "ইনভেন্টরি, মেয়াদ ও ইনসুলিন সংরক্ষণ",
+    },
+    photo: "/images/staff-4.jpg",
+    photoIsPlaceholder: true,
+  },
+  {
+    name: "[Name]",
+    role: { en: "OPD and appointments", ne: "OPD र अपोइन्टमेन्ट", bn: "OPD ও অ্যাপয়েন্টমেন্ট" },
+    note: {
+      en: "Doctor slots and Cabin 101",
+      ne: "डाक्टर स्लट र केबिन १०१",
+      bn: "ডাক্তার স্লট ও কেবিন ১০১",
+    },
+    photo: "/images/staff-5.jpg",
+    photoIsPlaceholder: true,
+  },
+  {
+    name: "[Name]",
+    role: { en: "Home delivery", ne: "घरमै डेलिभरी", bn: "হোম ডেলিভারি" },
+    note: {
+      en: "Mirik town and nearby gardens",
+      ne: "मिरिक सहर र नजिकका बगान",
+      bn: "মিরিক শহর ও কাছের বাগান",
+    },
+    photo: "/images/staff-6.jpg",
+    photoIsPlaceholder: true,
+  },
+];
+
 export const timeline: TimelineItem[] = [
   {
     year: "c. 1975",
     title: {
-      en: "A young doctor comes to Mirik",
-      ne: "एक युवा डाक्टर मिरिक आउनुहुन्छ",
-      bn: "এক তরুণ ডাক্তার মিরিকে আসেন",
+      en: "A doctor and his wife come to Mirik",
+      ne: "एक डाक्टर र उहाँकी श्रीमती मिरिक आउनुहुन्छ",
+      bn: "এক ডাক্তার ও তাঁর স্ত্রী মিরিকে আসেন",
     },
     text: {
-      en: "Dr. Swapan Kumar Kundu begins practising in the hill town, treating patients from Mirik and the surrounding tea gardens.",
-      ne: "डा. स्वपन कुमार कुण्डुले पहाडी सहरमा अभ्यास सुरु गर्नुहुन्छ, मिरिक र वरपरका चिया बगानका बिरामीको उपचार गर्दै।",
-      bn: "ডা. স্বপন কুমার কুণ্ডু পাহাড়ি শহরে প্র্যাকটিস শুরু করেন, মিরিক ও আশপাশের চা-বাগানের রোগীদের চিকিৎসা করে।",
+      en: "Dr. Swapan Kumar Kundu and Pushpalata Gurung begin together: he sees patients from Mirik and the tea gardens, she sets up the counter.",
+      ne: "डा. स्वपन कुमार कुण्डु र पुष्पलता गुरुङ सँगै सुरु गर्नुहुन्छ: उहाँ मिरिक र चिया बगानका बिरामी हेर्नुहुन्छ, उहाँ काउन्टर तयार गर्नुहुन्छ।",
+      bn: "ডা. স্বপন কুমার কুণ্ডু ও পুষ্পলতা গুরুং একসঙ্গে শুরু করেন: তিনি মিরিক ও চা-বাগানের রোগী দেখেন, তিনি কাউন্টার সাজান।",
     },
   },
   {
@@ -93,6 +217,19 @@ export const timeline: TimelineItem[] = [
       en: "Visiting specialists begin consulting at the hall, and OPD Cabin 101 becomes a fixture for the town.",
       ne: "आउने विशेषज्ञहरूले हलमा परामर्श दिन थाल्छन्, र OPD केबिन १०१ सहरको परिचित ठाउँ बन्छ।",
       bn: "আগত বিশেষজ্ঞরা হলে পরামর্শ দিতে শুরু করেন, আর OPD কেবিন ১০১ শহরের পরিচিত ঠিকানা হয়ে ওঠে।",
+    },
+  },
+  {
+    year: "c. 2010s",
+    title: {
+      en: "Dr. Subhendu Kundu takes the counter",
+      ne: "डा. शुभेन्दु कुण्डुले काउन्टर सम्हाल्नुहुन्छ",
+      bn: "ডা. শুভেন্দু কুণ্ডু কাউন্টারের দায়িত্ব নেন",
+    },
+    text: {
+      en: "The next generation steps in, building a team of six and bringing delivery, WhatsApp orders and visiting specialists to the hall.",
+      ne: "अर्को पुस्ता अघि आउँछ, छ जनाको टोली बनाउँदै र हलमा डेलिभरी, WhatsApp अर्डर र आउने विशेषज्ञ ल्याउँदै।",
+      bn: "পরের প্রজন্ম এগিয়ে আসে, ছয়জনের টিম গড়ে আর হলে ডেলিভারি, WhatsApp অর্ডার ও আগত বিশেষজ্ঞ নিয়ে আসে।",
     },
   },
   {

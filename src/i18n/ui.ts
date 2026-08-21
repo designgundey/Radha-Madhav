@@ -33,8 +33,14 @@ export const ui = {
     "trust.3": "Same-day home delivery",
     "trust.4": "Nepali · Hindi · Bengali · English",
 
+    "about.founders": "The founders",
+    "about.today": "Today",
+    "about.team": "The team",
+    "about.teamSub": "Six people who keep the counter running, six days a week.",
+    "about.pageSub2":
+      "The journey of Dr. Swapan Kumar Kundu and Pushpalata Gurung, the medical hall that grew around their work, and the team that runs it today.",
     "about.page": "Our story",
-    "about.h1": "Fifty years of care in Mirik",
+    "about.h1": "Fifty years of care in Mirik, from a family of doctors",
     "about.pageSub":
       "The journey of Dr. Swapan Kumar Kundu and the medical hall that grew around his practice.",
     "about.meta":
@@ -43,7 +49,7 @@ export const ui = {
     "about.timelineSub": "Milestones from five decades at Krishnanagar.",
     "about.read": "Read our story",
     "about.legacyEyebrow": "Our legacy",
-    "about.legacyTitle": "Built by a doctor, trusted by a town",
+    "about.legacyTitle": "A family of doctors, trusted by a town",
     "about.samplePhoto": "stand-in photo",
     "about.galleryEyebrow": "Gallery",
     "about.eyebrow": "About us",
@@ -224,8 +230,14 @@ export const ui = {
     "trust.3": "सोही दिन घरमै डेलिभरी",
     "trust.4": "नेपाली · हिन्दी · बंगाली · English",
 
+    "about.founders": "संस्थापकहरू",
+    "about.today": "आज",
+    "about.team": "टोली",
+    "about.teamSub": "हप्ताको छ दिन काउन्टर चलाइराख्ने छ जना।",
+    "about.pageSub2":
+      "डा. स्वपन कुमार कुण्डु र पुष्पलता गुरुङको यात्रा, उहाँहरूको काम वरिपरि हुर्केको मेडिकल हल, र आज यसलाई चलाउने टोली।",
     "about.page": "हाम्रो कथा",
-    "about.h1": "मिरिकमा पचास वर्षको हेरचाह",
+    "about.h1": "डाक्टरहरूको परिवारबाट मिरिकमा पचास वर्षको हेरचाह",
     "about.pageSub": "डा. स्वपन कुमार कुण्डु र उहाँको अभ्यास वरिपरि हुर्केको मेडिकल हलको यात्रा।",
     "about.meta":
       "राधा माधव मेडिकल हल, मिरिकको इतिहास र विरासत: डा. स्वपन कुमार कुण्डुद्वारा स्थापित, पाँच दशकदेखि मिरिक र दार्जिलिङका चिया बगानको सेवामा।",
@@ -233,7 +245,7 @@ export const ui = {
     "about.timelineSub": "कृष्णनगरका पाँच दशकका मुख्य घटना।",
     "about.read": "हाम्रो कथा पढ्नुहोस्",
     "about.legacyEyebrow": "हाम्रो विरासत",
-    "about.legacyTitle": "डाक्टरले बनाएको, सहरले भरोसा गरेको",
+    "about.legacyTitle": "डाक्टरहरूको परिवार, सहरको भरोसा",
     "about.samplePhoto": "अस्थायी फोटो",
     "about.galleryEyebrow": "ग्यालरी",
     "about.eyebrow": "हाम्रो बारेमा",
@@ -412,8 +424,14 @@ export const ui = {
     "trust.3": "একই দিনে হোম ডেলিভারি",
     "trust.4": "নেপালি · হিন্দি · বাংলা · English",
 
+    "about.founders": "প্রতিষ্ঠাতারা",
+    "about.today": "আজ",
+    "about.team": "টিম",
+    "about.teamSub": "সপ্তাহে ছয় দিন কাউন্টার সচল রাখেন যে ছয়জন।",
+    "about.pageSub2":
+      "ডা. স্বপন কুমার কুণ্ডু ও পুষ্পলতা গুরুংয়ের যাত্রা, তাঁদের কাজ ঘিরে গড়ে ওঠা মেডিক্যাল হল, আর আজ যে টিম এটি চালায়।",
     "about.page": "আমাদের গল্প",
-    "about.h1": "মিরিকে পঞ্চাশ বছরের যত্ন",
+    "about.h1": "ডাক্তারদের এক পরিবার থেকে মিরিকে পঞ্চাশ বছরের যত্ন",
     "about.pageSub":
       "ডা. স্বপন কুমার কুণ্ডু এবং তাঁর প্র্যাকটিস ঘিরে গড়ে ওঠা মেডিক্যাল হলের যাত্রা।",
     "about.meta":
@@ -422,7 +440,7 @@ export const ui = {
     "about.timelineSub": "কৃষ্ণনগরে পাঁচ দশকের মাইলফলক।",
     "about.read": "আমাদের গল্প পড়ুন",
     "about.legacyEyebrow": "আমাদের ঐতিহ্য",
-    "about.legacyTitle": "একজন ডাক্তারের গড়া, একটি শহরের ভরসা",
+    "about.legacyTitle": "ডাক্তারদের এক পরিবার, একটি শহরের ভরসা",
     "about.samplePhoto": "অস্থায়ী ছবি",
     "about.galleryEyebrow": "গ্যালারি",
     "about.eyebrow": "আমাদের সম্পর্কে",

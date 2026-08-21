@@ -89,7 +89,9 @@ test.describe("homepage smoke test", () => {
   test("about page tells the founder story with timeline and gallery", async ({ page }) => {
     await page.goto("/about/");
     await expect(page.getByRole("heading", { level: 1 })).toContainText("Fifty years");
-    await expect(page.locator(".history-line li")).toHaveCount(6);
+    await expect(page.locator(".history-line li")).toHaveCount(7);
+    await expect(page.locator(".team-card")).toHaveCount(6);
+    await expect(page.locator(".founders .legacy-portrait")).toHaveCount(2);
     await expect(page.locator("#gallery .img-card")).toHaveCount(6);
   });
 });

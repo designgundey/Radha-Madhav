@@ -105,7 +105,9 @@ Everything below currently holds a sample/placeholder value. Search each file fo
   used on public-health posters; each entry includes an English gloss.
 - **`src/data/gallery.ts`** — the gallery cards shown on `/about/`. Swap the `src` paths for real
   shots of your storefront, counter, and team.
-- **`src/data/legacy.ts`** — Dr. Swapan Kumar Kundu's story and the history timeline. Years marked
+- **`src/data/legacy.ts`** — the founders' story (Dr. Swapan Kumar Kundu and Pushpalata Gurung),
+  Dr. Subhendu Kundu's section, the six-person `team` (replace `[Name]` and `public/images/staff-N.jpg`)
+  and the history timeline. Years marked
   `c.` are approximate and the events are written from the brief: confirm every date, name and
   claim with the family, and replace the stand-in portrait `public/images/dr-kundu.jpg`.
 - **`public/images/logo.svg`** — the brand logo (`logo-light.svg` is the same mark recoloured for
