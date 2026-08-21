@@ -207,6 +207,19 @@ export const timeline: TimelineItem[] = [
     },
   },
   {
+    year: "c. 1995",
+    title: {
+      en: "Free Sunday check-ups begin",
+      ne: "निःशुल्क आइतबार जाँच सुरु",
+      bn: "বিনামূল্যে রবিবারের চেক-আপ শুরু",
+    },
+    text: {
+      en: "Blood pressure and sugar checks on the first Sunday of every month, open to anyone who walks in. The habit continues today.",
+      ne: "हरेक महिनाको पहिलो आइतबार रक्तचाप र सुगर जाँच, जो आए पनि खुला। यो चलन आज पनि जारी छ।",
+      bn: "প্রতি মাসের প্রথম রবিবার রক্তচাপ ও সুগার পরীক্ষা, যে কেউ এলেই। সেই অভ্যাস আজও চলছে।",
+    },
+  },
+  {
     year: "c. 2000s",
     title: {
       en: "A polyclinic under one roof",
@@ -227,9 +240,22 @@ export const timeline: TimelineItem[] = [
       bn: "ডা. শুভেন্দু কুণ্ডু কাউন্টারের দায়িত্ব নেন",
     },
     text: {
-      en: "The next generation steps in, building a team of six and bringing delivery, WhatsApp orders and visiting specialists to the hall.",
-      ne: "अर्को पुस्ता अघि आउँछ, छ जनाको टोली बनाउँदै र हलमा डेलिभरी, WhatsApp अर्डर र आउने विशेषज्ञ ल्याउँदै।",
-      bn: "পরের প্রজন্ম এগিয়ে আসে, ছয়জনের টিম গড়ে আর হলে ডেলিভারি, WhatsApp অর্ডার ও আগত বিশেষজ্ঞ নিয়ে আসে।",
+      en: "The next generation steps in, building a team of six and bringing visiting specialists to OPD Cabin 101.",
+      ne: "अर्को पुस्ता अघि आउँछ, छ जनाको टोली बनाउँदै र OPD केबिन १०१ मा आउने विशेषज्ञ ल्याउँदै।",
+      bn: "পরের প্রজন্ম এগিয়ে আসে, ছয়জনের টিম গড়ে আর OPD কেবিন ১০১-এ আগত বিশেষজ্ঞ নিয়ে আসে।",
+    },
+  },
+  {
+    year: "c. 2016",
+    title: {
+      en: "Home delivery and WhatsApp orders",
+      ne: "घरमै डेलिभरी र WhatsApp अर्डर",
+      bn: "হোম ডেলিভারি ও WhatsApp অর্ডার",
+    },
+    text: {
+      en: "A photo of the prescription is enough. Medicines start reaching homes across Mirik and the nearby gardens the same day.",
+      ne: "प्रेस्क्रिप्सनको फोटो नै पर्याप्त। औषधि मिरिक र नजिकका बगानका घरघरमा सोही दिन पुग्न थाल्छ।",
+      bn: "প্রেসক্রিপশনের একটা ছবিই যথেষ্ট। ওষুধ একই দিনে মিরিক ও কাছের বাগানের বাড়ি বাড়ি পৌঁছতে শুরু করে।",
     },
   },
   {
