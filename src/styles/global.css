@@ -531,16 +531,15 @@ section {
 }
 .medallion-ring {
   position: absolute;
-  inset: -4%;
+  inset: -5%;
   border-radius: 50%;
   border: 1px solid var(--ring);
-  transform: translate(2%, -2%);
   pointer-events: none;
 }
 .medallion-ring.two {
-  inset: -9%;
-  transform: translate(-1.5%, 2%);
-  border-color: rgba(140, 220, 196, 0.14);
+  inset: -10%;
+  border-color: rgba(140, 220, 196, 0.12);
+  border-style: dashed;
 }
 .badge {
   position: absolute;
@@ -1058,7 +1057,7 @@ section {
 
 /* ---------- Doctors sub-page ---------- */
 .page-hero {
-  padding-top: 150px;
+  padding-top: 140px;
   padding-bottom: 48px;
 }
 .page-hero h1 {
@@ -2134,7 +2133,7 @@ html:not(.loaded) .scroll-cue {
 }
 .doctor-photo {
   position: relative;
-  aspect-ratio: 16 / 10;
+  aspect-ratio: 5 / 4;
   overflow: hidden;
   border-bottom: 1px solid var(--line);
 }
@@ -2142,7 +2141,7 @@ html:not(.loaded) .scroll-cue {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 20%;
+  object-position: center 30%;
   filter: saturate(0.8);
   transition: transform 1.2s var(--ease-out);
 }
@@ -2859,12 +2858,12 @@ html[data-lang="bn"] .hero h1 {
 }
 .service-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
 .service-detail {
   display: grid;
-  grid-template-rows: 200px 1fr;
+  grid-template-rows: 170px 1fr;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-l);
@@ -2895,7 +2894,7 @@ html[data-lang="bn"] .hero h1 {
   gap: 14px;
 }
 .service-detail-body h2 {
-  font-size: 1.45rem;
+  font-size: 1.25rem;
 }
 .service-detail-body > p {
   color: var(--ink-soft);
@@ -2929,6 +2928,11 @@ html[data-lang="bn"] .hero h1 {
   flex-wrap: wrap;
   gap: 10px;
   margin-top: auto;
+}
+@media (max-width: 1000px) {
+  .service-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media (max-width: 760px) {
   .service-grid {
@@ -3439,15 +3443,26 @@ footer.site.footer-v2 {
   position: relative;
   overflow: hidden;
   margin-top: 40px;
-  padding: 96px 0 28px;
+  padding: 150px 0 28px;
   border-top: none;
   background: var(--bg);
   clip-path: ellipse(140% 100% at 50% 100%);
 }
 .footer-bg {
   position: absolute;
-  inset: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: var(--footer-img-h, 60%);
   z-index: 0;
+}
+.footer-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 60%;
+  opacity: 0.35;
+  filter: saturate(0.7);
 }
 .footer-bg .place-map,
 .footer-bg .place-map iframe,
@@ -3463,9 +3478,13 @@ footer.site.footer-v2 {
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    linear-gradient(180deg, var(--bg) 0%, rgba(5, 25, 22, 0.55) 30%, rgba(5, 25, 22, 0.7) 100%),
-    radial-gradient(60% 80% at 20% 50%, rgba(5, 25, 22, 0.8), transparent 70%);
+  background: linear-gradient(
+    180deg,
+    var(--bg) 0%,
+    transparent 35%,
+    transparent 70%,
+    var(--bg) 100%
+  );
 }
 .footer-ghost {
   position: absolute;
@@ -3520,4 +3539,9 @@ footer.site.footer-v2 {
   .footer-ghost {
     display: none;
   }
+}
+
+/* The gloss helper sets position: relative; the medallion photo must stay absolutely placed to keep its circle. */
+.medallion-img {
+  position: absolute;
 }

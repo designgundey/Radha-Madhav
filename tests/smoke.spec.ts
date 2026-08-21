@@ -64,8 +64,8 @@ test.describe("homepage smoke test", () => {
     await expect(page.locator("#reviews .rating-num")).toHaveText("4.9");
     await expect(page.locator("footer address")).toContainText("Mirik");
     await expect(page.locator("#videos .reel-card")).toHaveCount(4);
-    await expect(page.locator("footer .credit a")).toHaveAttribute("href", /1947\.io/);
-    await expect(page.locator("footer iframe")).toHaveAttribute("src", /google\.com\/maps/);
+    await expect(page.locator("footer .credit a").first()).toHaveAttribute("href", /1947\.io/);
+    await expect(page.locator("#contact iframe")).toHaveAttribute("src", /google\.com\/maps/);
   });
 
   test("Nepali and Bengali versions render with their own copy", async ({ page }) => {

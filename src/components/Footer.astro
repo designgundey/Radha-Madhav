@@ -1,7 +1,6 @@
 ---
 import Icon from "./Icon.astro";
 import Stars from "./Stars.astro";
-import PlaceMap from "./PlaceMap.astro";
 import { site } from "../data/site";
 import { getLang, localePath, useT } from "../i18n";
 
@@ -28,7 +27,7 @@ const year = new Date().getFullYear();
 
 <footer class="site footer-v2">
   <div class="footer-bg" aria-hidden="true">
-    <PlaceMap title={t("contact.mapTitle")} />
+    <img src="/images/mirik-lake-panorama.jpg" alt="" loading="lazy" decoding="async" />
     <span class="footer-ghost">{site.name.split(" ")[0]}</span>
   </div>
   <div class="wrap">
@@ -100,7 +99,30 @@ const year = new Date().getFullYear();
       <span class="credit">
         {t("footer.credit")}
         <a href="https://www.1947.io" target="_blank" rel="noopener">Studio 1947</a>
+        · Photo:
+        <a
+          href="https://commons.wikimedia.org/wiki/File:Mirik_lake_panorama.jpg"
+          target="_blank"
+          rel="noopener"
+        >
+          Shubh.ch1994, CC BY-SA 4.0
+        </a>
       </span>
     </div>
   </div>
 </footer>
+
+<script>
+  // Keep the panorama's bottom edge exactly at the middle of the footer panel.
+  const footer = document.querySelector<HTMLElement>("footer.footer-v2");
+  const panel = footer?.querySelector<HTMLElement>(".footer-panel");
+  if (footer && panel) {
+    const fit = () => {
+      const top = panel.getBoundingClientRect().top - footer.getBoundingClientRect().top;
+      footer.style.setProperty("--footer-img-h", `${Math.round(top + panel.offsetHeight / 2)}px`);
+    };
+    fit();
+    window.addEventListener("resize", fit, { passive: true });
+    window.addEventListener("load", fit, { once: true });
+  }
+</script>
