@@ -118,6 +118,13 @@ Everything below currently holds a sample/placeholder value. Search each file fo
   the dark theme; it's used in the header and footer). `logo-mark.svg` is the peacock mark alone,
   animated as the opening splash in `src/components/Loader.astro`.
 
+## Analytics
+
+Page views are tracked with [Vercel Analytics](https://vercel.com/docs/analytics) via
+`@vercel/analytics/astro`, mounted once in `BaseLayout.astro`. It only sends data from the deployed
+Vercel domain (local `npm run dev` / `preview` is a no-op). Enable **Analytics** in the Vercel
+project dashboard to see the numbers.
+
 ## Deployment (Vercel)
 
 This repo is set up for Vercel's git integration — CI does **not** deploy, Vercel does, whenever

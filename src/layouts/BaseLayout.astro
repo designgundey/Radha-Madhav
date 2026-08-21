@@ -3,6 +3,7 @@ import IconSprite from "../components/IconSprite.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import Loader from "../components/Loader.astro";
+import Analytics from "@vercel/analytics/astro";
 import { getLang, langMeta, langs, localePath, stripLocale, useT } from "../i18n";
 import "../styles/global.css";
 
@@ -83,6 +84,7 @@ const basePath = stripLocale(Astro.url.pathname);
       <slot />
     </main>
     <Footer />
+    <Analytics />
 
     <script>
       // Reveal-on-scroll: elements with [data-reveal] fade/blur in as they enter.
