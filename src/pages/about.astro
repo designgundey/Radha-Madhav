@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import { founder, timeline } from "../data/legacy";
+import { galleryTiles } from "../data/gallery";
+import { site } from "../data/site";
+import { getLang, l, localePath, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+---
+
+<BaseLayout
+  title={`${t("about.page")} | ${site.name} | Mirik, Darjeeling`}
+  description={t("about.meta")}
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <a class="back-link" href={localePath("/#about", lang)}>
+        <Icon name="i-arrow" />{t("doctorsPage.back")}
+      </a>
+      <p class="eyebrow">{t("about.page")}</p>
+      <h1>{t("about.h1")}</h1>
+      <p class="hero-sub" style="margin-inline:0; animation:none; opacity:1">
+        {t("about.pageSub")}
+      </p>
+    </div>
+  </section>
+
+  <section class="story">
+    <div class="wrap split">
+      <div class="legacy-portrait large" data-reveal="scale">
+        <img
+          src={founder.photo}
+          alt={l(founder.name, lang)}
+          loading="lazy"
+          decoding="async"
+          width="720"
+          height="900"
+        />
+        {founder.photoIsPlaceholder && <span class="tbc photo-tag">{t("about.samplePhoto")}</span>}
+        <div class="legacy-caption">
+          <strong>{l(founder.name, lang)}</strong>
+          <span>{l(founder.role, lang)}</span>
+        </div>
+      </div>
+      <div class="split-copy story-copy" data-reveal="right">
+        {founder.intro.map((p) => <p>{l(p, lang)}</p>)}
+        <blockquote class="legacy-quote">“{l(founder.quote, lang)}”</blockquote>
+      </div>
+    </div>
+  </section>
+
+  <section class="history">
+    <div class="wrap">
+      <div class="section-head" data-reveal>
+        <p class="eyebrow">{t("about.timeline")}</p>
+        <h2>{t("about.timelineSub")}</h2>
+      </div>
+      <ol class="history-line">
+        {
+          timeline.map((item, i) => (
+            <li data-reveal style={`--reveal-delay:${(i % 3) * 90}ms`}>
+              <span class="history-year">{item.year}</span>
+              <h3>{l(item.title, lang)}</h3>
+              <p>{l(item.text, lang)}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </section>
+
+  <section id="gallery">
+    <div class="wrap">
+      <div class="section-head center" data-reveal>
+        <p class="eyebrow">{t("about.galleryEyebrow")}</p>
+        <h2>{t("gallery.title")}</h2>
+        <p>{t("gallery.sub")}</p>
+      </div>
+      <div class="gallery-grid">
+        {
+          galleryTiles.map((tile, i) => (
+            <article class="img-card" data-reveal style={`--reveal-delay:${(i % 3) * 110}ms`}>
+              <img src={tile.src} alt={tile.alt} loading="lazy" decoding="async" />
+              <div class="img-card-body">
+                <div class="img-card-icon">
+                  <Icon name={tile.icon} />
+                </div>
+                <h3>{l(tile.title, lang)}</h3>
+                <p>{l(tile.caption, lang)}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

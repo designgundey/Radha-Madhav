@@ -1,0 +1,91 @@
+---
+// Dark Mapbox map centred on the shop. Needs PUBLIC_MAPBOX_TOKEN (see .env.example);
+// without it we fall back to the Google Maps embed so the page never shows a blank box.
+import { site } from "../data/site";
+
+interface Props {
+  title: string;
+  class?: string;
+}
+
+const { title, class: className } = Astro.props;
+const token = import.meta.env.PUBLIC_MAPBOX_TOKEN as string | undefined;
+---
+
+<div class:list={["place-map", className]}>
+  {
+    token ? (
+      <div
+        class="mapbox-host"
+        data-token={token}
+        data-lat={site.lat}
+        data-lng={site.lng}
+        data-name={site.name}
+        role="img"
+        aria-label={title}
+      />
+    ) : (
+      <iframe
+        src={site.mapsEmbed}
+        title={title}
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen
+      />
+    )
+  }
+</div>
+
+<script>
+  // Only pull the Mapbox bundle (~500 KB) when a host element exists and scrolls into view.
+  const hosts = document.querySelectorAll<HTMLElement>(".mapbox-host");
+  if (hosts.length) {
+    const init = async (host: HTMLElement) => {
+      const [{ default: mapboxgl }] = await Promise.all([
+        import("mapbox-gl"),
+        import("mapbox-gl/dist/mapbox-gl.css"),
+      ]);
+      mapboxgl.accessToken = host.dataset.token ?? "";
+      const center: [number, number] = [Number(host.dataset.lng), Number(host.dataset.lat)];
+      const map = new mapboxgl.Map({
+        container: host,
+        style: "mapbox://styles/mapbox/dark-v11",
+        center,
+        zoom: 15.4,
+        pitch: 45,
+        bearing: -12,
+        attributionControl: false,
+        cooperativeGestures: true,
+      });
+      map.scrollZoom.disable();
+      map.addControl(new mapboxgl.AttributionControl({ compact: true }));
+      map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), "bottom-right");
+
+      const el = document.createElement("div");
+      el.className = "map-pin";
+      el.innerHTML = '<span class="map-pin-ring"></span><span class="map-pin-dot"></span>';
+      new mapboxgl.Marker({ element: el, anchor: "center" })
+        .setLngLat(center)
+        .setPopup(
+          new mapboxgl.Popup({ offset: 18, closeButton: false }).setHTML(
+            `<strong>${host.dataset.name}</strong><br>Ward No. 5, Krishnanagar, Mirik`,
+          ),
+        )
+        .addTo(map);
+      map.on("load", () => map.easeTo({ zoom: 16, duration: 2500 }));
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const e of entries) {
+          if (e.isIntersecting) {
+            io.unobserve(e.target);
+            init(e.target as HTMLElement);
+          }
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    hosts.forEach((h) => io.observe(h));
+  }
+</script>

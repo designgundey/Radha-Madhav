@@ -1,0 +1,124 @@
+---
+import IconSprite from "../components/IconSprite.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import Loader from "../components/Loader.astro";
+import { getLang, langMeta, langs, localePath, stripLocale, useT } from "../i18n";
+import "../styles/global.css";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+const {
+  title = "Radhamadhav Medical Hall | Pharmacy in Mirik, Darjeeling",
+  description = "Radhamadhav Medical Hall is a trusted pharmacy in Krishnanagar, Mirik, Darjeeling, near Mirik Hospital. Genuine medicines, health devices, home delivery and visiting doctors. Open Mon to Sat, 8 AM to 8 PM.",
+} = Astro.props;
+const basePath = stripLocale(Astro.url.pathname);
+---
+
+<!doctype html>
+<html lang={langMeta[lang].htmlLang} data-lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#051916" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {langs.map((l) => <link rel="alternate" hreflang={l} href={localePath(basePath, l)} />)}
+    <link rel="alternate" hreflang="x-default" href={localePath(basePath, "en")} />
+
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "Pharmacy",
+        name: "Radhamadhav Medical Hall",
+        alternateName: "Radha Madhav Medical Hall",
+        telephone: "+919434431319",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Ward No. 5, Krishnanagar",
+          addressLocality: "Mirik",
+          addressRegion: "West Bengal",
+          postalCode: "734214",
+          addressCountry: "IN",
+        },
+        geo: { "@type": "GeoCoordinates", latitude: 26.8857507, longitude: 88.1886989 },
+        openingHoursSpecification: [
+          {
+            "@type": "OpeningHoursSpecification",
+            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+            opens: "08:00",
+            closes: "20:00",
+          },
+        ],
+        aggregateRating: { "@type": "AggregateRating", ratingValue: 4.9, reviewCount: 16 },
+        hasMap: "https://maps.app.goo.gl/5dfmX17yyFWREbAVA",
+      })}
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Hind:wght@400;500;600;700&family=Hind+Siliguri:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <Loader />
+    <div class="atmosphere" aria-hidden="true"></div>
+    <a class="skip-link" href="#main">{t("skip")}</a>
+    <IconSprite />
+    <Header />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer />
+
+    <script>
+      // Reveal-on-scroll: elements with [data-reveal] fade/blur in as they enter.
+      const revealables = document.querySelectorAll<HTMLElement>("[data-reveal]");
+      if ("IntersectionObserver" in window) {
+        const io = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                (entry.target as HTMLElement).classList.add("in");
+                io.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: "0px 0px -10% 0px", threshold: 0.12 },
+        );
+        revealables.forEach((el) => io.observe(el));
+      } else {
+        revealables.forEach((el) => el.classList.add("in"));
+      }
+
+      // Compact the header once the page is scrolled.
+      const header = document.querySelector("header.site");
+      const onScroll = () => header?.classList.toggle("scrolled", window.scrollY > 24);
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+
+      // Language switcher: keep the current #section when hopping languages,
+      // and remember the choice for next time.
+      document.querySelectorAll<HTMLAnchorElement>(".lang-switch a").forEach((a) => {
+        a.addEventListener("click", () => {
+          try {
+            localStorage.setItem("rmmh-lang", a.dataset.lang ?? "en");
+          } catch {
+            /* private mode */
+          }
+          if (location.hash) a.href = a.href.split("#")[0] + location.hash;
+        });
+      });
+    </script>
+  </body>
+</html>

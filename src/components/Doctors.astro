@@ -1,0 +1,45 @@
+---
+import Icon from "./Icon.astro";
+import DoctorCard from "./DoctorCard.astro";
+import Medallion from "./Medallion.astro";
+import { doctors, upcomingSlots } from "../data/doctors";
+import { getLang, localePath, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+---
+
+<section id="doctors">
+  <div class="wrap">
+    <div class="split flip" style="margin-bottom: 64px;">
+      <div class="split-copy" data-reveal="right">
+        <p class="eyebrow">{t("doctors.eyebrow")}</p>
+        <h2>{t("doctors.title")}</h2>
+        <p>{t("doctors.sub")}</p>
+        <p class="lead-accent">{t("doctors.lead")}</p>
+        <div class="actions">
+          <a class="btn btn-ghost" href={localePath("/doctors/", lang)}>
+            {t("doctors.all")}
+            <Icon name="i-arrow" />
+          </a>
+        </div>
+      </div>
+      <Medallion
+        src="/images/doctor-stethoscope.jpg"
+        alt={t("doctors.alt")}
+        badgeIcon="i-stethoscope"
+        badgePos="bl"
+        secondIcon="i-heart"
+      />
+    </div>
+    <div class="grid-3">
+      {
+        [...doctors, ...upcomingSlots].slice(0, 6).map((doctor, i) => (
+          <div data-reveal style={`--reveal-delay:${(i % 3) * 100}ms`}>
+            <DoctorCard doctor={doctor} />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

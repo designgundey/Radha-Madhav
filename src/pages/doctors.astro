@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import DoctorProfile from "../components/DoctorProfile.astro";
+import { doctors } from "../data/doctors";
+import { site } from "../data/site";
+import { getLang, l, localePath, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+---
+
+<BaseLayout
+  title={`${t("doctorsPage.title")} | ${site.name} | Mirik, Darjeeling`}
+  description={t("doctorsPage.meta")}
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <a class="back-link" href={localePath("/#doctors", lang)}>
+        <Icon name="i-arrow" />{t("doctorsPage.back")}
+      </a>
+      <p class="eyebrow">{t("doctors.eyebrow")}</p>
+      <h1>{t("doctorsPage.h1")}</h1>
+      <p class="hero-sub" style="margin-inline:0; animation:none; opacity:1">
+        {t("doctorsPage.sub")}
+      </p>
+      <nav class="doctor-jump" aria-label={t("doctorsPage.jump")}>
+        {
+          doctors.map((d) => (
+            <a href={`#${d.slug}`}>
+              <img class="jump-avatar" src={d.photo} alt="" width="28" height="28" loading="lazy" />
+              {l(d.name, lang)}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+
+  <section class="profiles">
+    <div class="wrap">
+      {doctors.map((doctor) => <DoctorProfile doctor={doctor} />)}
+    </div>
+  </section>
+</BaseLayout>

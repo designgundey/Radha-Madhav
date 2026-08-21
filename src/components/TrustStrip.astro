@@ -1,0 +1,28 @@
+---
+import Icon from "./Icon.astro";
+import { getLang, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+const items = [
+  { icon: "i-shield", label: t("trust.1") },
+  { icon: "i-pill", label: t("trust.2") },
+  { icon: "i-truck", label: t("trust.3") },
+  { icon: "i-users", label: t("trust.4") },
+];
+---
+
+<section class="trust">
+  <div class="wrap">
+    <ul>
+      {
+        items.map((item, i) => (
+          <li data-reveal style={`--reveal-delay:${i * 90}ms`}>
+            <Icon name={item.icon} />
+            {item.label}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,131 @@
+---
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+import { getLang, langMeta, langs, localePath, stripLocale, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+const p = (path: string) => localePath(path, lang);
+const basePath = stripLocale(Astro.url.pathname);
+
+const navLinks = [
+  { href: p("/about/"), label: t("nav.about") },
+  { href: p("/services/"), label: t("nav.services") },
+  { href: p("/doctors/"), label: t("nav.doctors") },
+  { href: p("/#videos"), label: t("nav.videos") },
+  { href: p("/#reviews"), label: t("nav.reviews") },
+];
+---
+
+<header class="site">
+  <div class="wrap nav-row">
+    <a class="brand" href={p("/")} aria-label={site.name}>
+      <img src="/images/logo-light.svg" alt={site.name} width="84" height="44" />
+    </a>
+    <nav class="primary" id="primary-nav" aria-label="Primary">
+      <ul>
+        {
+          navLinks.map((link) => (
+            <li>
+              <a href={link.href}>{link.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+    <div class="nav-actions">
+      <div class="lang-switch" id="lang-switch">
+        <button
+          class="lang-btn"
+          type="button"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="lang-menu"
+          aria-label={t("nav.lang")}
+        >
+          <Icon name="i-globe" />
+          <span>{langMeta[lang].short}</span>
+          <Icon name="i-arrow" class="chev" />
+        </button>
+        <div class="lang-menu" id="lang-menu" role="menu">
+          {
+            langs.map((l) => (
+              <a
+                href={localePath(basePath, l)}
+                data-lang={l}
+                lang={langMeta[l].htmlLang}
+                role="menuitem"
+                aria-current={l === lang ? "page" : undefined}
+              >
+                {langMeta[l].label}
+                <small>{langMeta[l].name}</small>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+      <a
+        class="icon-btn wa"
+        href={site.whatsappHref}
+        target="_blank"
+        rel="noopener"
+        aria-label={t("nav.whatsapp")}
+        title={t("nav.whatsapp")}
+      >
+        <Icon name="i-whatsapp" />
+      </a>
+      <a class="btn btn-primary btn-sm" href={site.phoneHref}>
+        <Icon name="i-phone" />{t("nav.call")}
+      </a>
+      <button
+        class="menu-toggle"
+        id="menu-toggle"
+        aria-expanded="false"
+        aria-controls="primary-nav"
+        aria-label={t("nav.menu")}
+      >
+        <Icon name="i-menu" id="menu-icon" />
+      </button>
+    </div>
+  </div>
+</header>
+
+<script>
+  // Language dropdown
+  const langSwitch = document.getElementById("lang-switch");
+  const langBtn = langSwitch?.querySelector<HTMLButtonElement>(".lang-btn");
+  if (langSwitch && langBtn) {
+    const setOpen = (open: boolean) => {
+      langSwitch.classList.toggle("open", open);
+      langBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    };
+    langBtn.addEventListener("click", () => setOpen(!langSwitch.classList.contains("open")));
+    document.addEventListener("click", (e) => {
+      if (!langSwitch.contains(e.target as Node)) setOpen(false);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") setOpen(false);
+    });
+  }
+
+  const toggle = document.getElementById("menu-toggle") as HTMLButtonElement | null;
+  const nav = document.getElementById("primary-nav");
+  const menuIcon = document.querySelector("#menu-toggle use") as SVGUseElement | null;
+
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => {
+      const open = nav.classList.toggle("open");
+      toggle.setAttribute("aria-expanded", open ? "true" : "false");
+      menuIcon?.setAttribute("href", open ? "#i-close" : "#i-menu");
+    });
+
+    nav.addEventListener("click", (event) => {
+      const target = event.target as HTMLElement;
+      if (target.tagName === "A") {
+        nav.classList.remove("open");
+        toggle.setAttribute("aria-expanded", "false");
+        menuIcon?.setAttribute("href", "#i-menu");
+      }
+    });
+  }
+</script>

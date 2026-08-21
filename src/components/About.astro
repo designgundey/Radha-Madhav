@@ -1,0 +1,52 @@
+---
+import Icon from "./Icon.astro";
+import Medallion from "./Medallion.astro";
+import { site } from "../data/site";
+import { getLang, localePath, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+const facts = [
+  { icon: "i-shield", title: t("about.f1"), detail: `${t("about.f1d")} ${site.registrationNo}` },
+  { icon: "i-users", title: t("about.f2"), detail: t("about.f2d") },
+  { icon: "i-truck", title: t("about.f3"), detail: t("about.f3d") },
+  { icon: "i-clock", title: t("about.f4"), detail: t("about.f4d") },
+];
+---
+
+<section id="about">
+  <div class="wrap split">
+    <div class="split-copy" data-reveal="left">
+      <p class="eyebrow">{t("about.eyebrow")}</p>
+      <h2>{t("about.title")}</h2>
+      <p>{t("about.p1")}</p>
+      <p>{t("about.p2")}</p>
+      <p class="lead-accent">{t("about.lead")}</p>
+      <div class="actions" style="margin-top: 26px;">
+        <a class="btn btn-ghost" href={localePath("/about/", lang)}>
+          {t("about.read")}
+          <Icon name="i-arrow" />
+        </a>
+      </div>
+      <ul class="fact-list">
+        {
+          facts.map((fact) => (
+            <li>
+              <Icon name={fact.icon} />
+              <div>
+                <strong>{fact.title}</strong>
+                <span>{fact.detail}</span>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <Medallion
+      src="/images/pharmacist-shelf.jpg"
+      alt={t("about.alt")}
+      badgeIcon="i-mortar"
+      secondIcon="i-shield"
+    />
+  </div>
+</section>

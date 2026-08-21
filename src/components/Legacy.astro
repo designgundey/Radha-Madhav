@@ -1,0 +1,46 @@
+---
+import Icon from "./Icon.astro";
+import { founder, timeline } from "../data/legacy";
+import { getLang, l, localePath, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+const first = timeline[0];
+const last = timeline[timeline.length - 1];
+---
+
+<section id="legacy">
+  <div class="wrap split">
+    <div class="legacy-portrait" data-reveal="scale">
+      <img
+        src={founder.photo}
+        alt={l(founder.name, lang)}
+        loading="lazy"
+        decoding="async"
+        width="720"
+        height="900"
+      />
+      {founder.photoIsPlaceholder && <span class="tbc photo-tag">{t("about.samplePhoto")}</span>}
+      <div class="legacy-caption">
+        <strong>{l(founder.name, lang)}</strong>
+        <span>{l(founder.role, lang)}</span>
+      </div>
+    </div>
+    <div class="split-copy" data-reveal="right">
+      <p class="eyebrow">{t("about.legacyEyebrow")}</p>
+      <h2>{t("about.legacyTitle")}</h2>
+      <p>{l(founder.intro[0], lang)}</p>
+      <blockquote class="legacy-quote">“{l(founder.quote, lang)}”</blockquote>
+      <ul class="legacy-years">
+        <li><strong>{first.year}</strong><span>{l(first.title, lang)}</span></li>
+        <li><strong>{last.year}</strong><span>{l(last.title, lang)}</span></li>
+      </ul>
+      <div class="actions">
+        <a class="btn btn-ghost" href={localePath("/about/", lang)}>
+          {t("about.read")}
+          <Icon name="i-arrow" />
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

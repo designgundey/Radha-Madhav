@@ -1,0 +1,113 @@
+---
+import Icon from "./Icon.astro";
+import WikiCard from "./WikiCard.astro";
+import { wikiEntries } from "../data/wiki";
+import { getLang, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+---
+
+<section id="wiki">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">{t("wiki.eyebrow")}</p>
+      <h2>{t("wiki.title")}</h2>
+      <p>{t("wiki.sub")}</p>
+    </div>
+
+    <div class="wiki-note">
+      <Icon name="i-info" />
+      <span>
+        यो सुविधा तपाईंको ब्राउजरको आवाज सुविधामा भर पर्छ। कुनै ब्राउजरमा नेपाली आवाज उपलब्ध नहुन
+        सक्छ। This uses your browser's built-in text-to-speech. a Nepali voice may not be installed
+        on every device, in which case a default voice will read the text instead.
+      </span>
+    </div>
+
+    <div class="grid-3" id="wiki-grid">
+      {wikiEntries.map((entry, i) => <WikiCard entry={entry} index={i} />)}
+    </div>
+
+    <p class="disclaimer">
+      यो जानकारी सामान्य सचेतनाका लागि मात्र हो, यो चिकित्सकको सल्लाहको विकल्प होइन। This
+      information is for general awareness only and is not a substitute for professional medical
+      advice. please consult your doctor or pharmacist for anything specific to you.
+    </p>
+  </div>
+</section>
+
+<script>
+  // Reads a wiki card's text aloud using the browser's SpeechSynthesis API.
+  // Falls back gracefully when the API or a Nepali voice isn't available.
+  const speechSupported = "speechSynthesis" in window;
+  let activeBtn: HTMLButtonElement | null = null;
+
+  function resetButton(btn: HTMLButtonElement) {
+    btn.dataset.speaking = "false";
+    btn.querySelector("svg use")?.setAttribute("href", "#i-speaker");
+    const label = btn.querySelector("span");
+    if (label) label.textContent = "सुन्नुहोस् (Listen)";
+  }
+
+  function pickVoice(): SpeechSynthesisVoice | null {
+    const voices = window.speechSynthesis.getVoices();
+    const nepali = voices.find((v) => v.lang?.toLowerCase().startsWith("ne"));
+    if (nepali) return nepali;
+    const hindi = voices.find((v) => v.lang?.toLowerCase().startsWith("hi"));
+    return hindi ?? null;
+  }
+
+  const grid = document.getElementById("wiki-grid");
+
+  grid?.addEventListener("click", (event) => {
+    const btn = (event.target as HTMLElement).closest<HTMLButtonElement>(".listen-btn");
+    if (!btn) return;
+
+    if (!speechSupported) {
+      const label = btn.querySelector("span");
+      if (label) label.textContent = "Voice not supported here";
+      return;
+    }
+
+    const isSpeaking = btn.dataset.speaking === "true";
+    window.speechSynthesis.cancel();
+    if (activeBtn && activeBtn !== btn) resetButton(activeBtn);
+
+    if (isSpeaking) {
+      resetButton(btn);
+      activeBtn = null;
+      return;
+    }
+
+    const targetId = btn.dataset.target;
+    const textEl = targetId ? document.getElementById(targetId) : null;
+    if (!textEl) return;
+
+    const utter = new SpeechSynthesisUtterance(textEl.textContent ?? "");
+    utter.lang = "ne-NP";
+    const voice = pickVoice();
+    if (voice) {
+      utter.lang = voice.lang;
+      utter.voice = voice;
+    }
+    utter.rate = 0.92;
+
+    utter.onend = () => {
+      resetButton(btn);
+      activeBtn = null;
+    };
+    utter.onerror = () => {
+      resetButton(btn);
+      activeBtn = null;
+    };
+
+    btn.dataset.speaking = "true";
+    btn.querySelector("svg use")?.setAttribute("href", "#i-pause");
+    const label = btn.querySelector("span");
+    if (label) label.textContent = "रोक्नुहोस् (Stop)";
+    activeBtn = btn;
+
+    window.speechSynthesis.speak(utter);
+  });
+</script>

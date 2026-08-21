@@ -1,0 +1,92 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Icon from "../components/Icon.astro";
+import { services, moreServices } from "../data/services";
+import { site } from "../data/site";
+import { getLang, l, localePath, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+const all = [...services, ...moreServices];
+---
+
+<BaseLayout
+  title={`${t("servicesPage.title")} | ${site.name} | Mirik, Darjeeling`}
+  description={t("servicesPage.meta")}
+>
+  <section class="page-hero">
+    <div class="wrap">
+      <a class="back-link" href={localePath("/#services", lang)}>
+        <Icon name="i-arrow" />{t("doctorsPage.back")}
+      </a>
+      <p class="eyebrow">{t("services.eyebrow")}</p>
+      <h1>{t("servicesPage.h1")}</h1>
+      <p class="hero-sub" style="margin-inline:0; animation:none; opacity:1">
+        {t("servicesPage.sub")}
+      </p>
+      <nav class="doctor-jump" aria-label={t("servicesPage.jump")}>
+        {
+          all.map((s) => (
+            <a href={`#${s.slug}`}>
+              <span class="jump-icon">
+                <Icon name={s.icon} />
+              </span>
+              {l(s.title, lang)}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </section>
+
+  <section class="profiles">
+    <div class="wrap">
+      <div class="service-grid">
+        {
+          all.map((s, i) => (
+            <article
+              class="service-detail"
+              id={s.slug}
+              data-reveal
+              style={`--reveal-delay:${(i % 2) * 100}ms`}
+            >
+              <div class="service-detail-media">
+                <img src={s.image} alt={s.imageAlt} loading="lazy" decoding="async" />
+                <span class="img-card-icon">
+                  <Icon name={s.icon} />
+                </span>
+              </div>
+              <div class="service-detail-body">
+                <h2>{l(s.title, lang)}</h2>
+                <p>{l(s.description, lang)}</p>
+                {s.points && (
+                  <ul class="service-points">
+                    {s.points.map((pt) => (
+                      <li>{l(pt, lang)}</li>
+                    ))}
+                  </ul>
+                )}
+                <div class="actions">
+                  <a class="btn btn-primary btn-sm" href={site.phoneHref}>
+                    <Icon name="i-phone" />
+                    {t("servicesPage.ask")}
+                  </a>
+                  <a
+                    class="btn btn-ghost btn-sm"
+                    href={site.whatsappHref}
+                    target="_blank"
+                    rel="noopener"
+                  >
+                    <Icon name="i-whatsapp" />
+                    WhatsApp
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+      <p class="disclaimer">{t("servicesPage.confirm")}</p>
+    </div>
+  </section>
+</BaseLayout>

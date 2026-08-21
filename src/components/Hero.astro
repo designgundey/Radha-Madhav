@@ -1,0 +1,118 @@
+---
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+import { getLang, localePath, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+---
+
+<section class="hero has-video">
+  <div class="hero-video" aria-hidden="true">
+    <video
+      id="hero-video"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto"
+      poster="/images/hero-poster.jpg"
+    >
+      <source src="/videos/hero.mp4" type="video/mp4" />
+      <source src="/videos/hero.webm" type="video/webm" />
+    </video>
+  </div>
+  <div class="wrap">
+    <h1 class="hero-title">
+      {t("hero.title1")}
+      <br />
+      <span
+        class="typed"
+        id="hero-typed"
+        data-phrases={JSON.stringify([t("hero.title2"), t("hero.title2b"), t("hero.title2c")])}
+      >
+        {t("hero.title2")}
+      </span><span class="caret" id="hero-caret" aria-hidden="true">|</span>
+    </h1>
+    <p class="hero-sub">
+      {t("hero.sub")}
+      <br />
+      {t("hero.sub2")}
+    </p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href={site.phoneHref}>
+        <Icon name="i-phone" />{t("hero.call")}
+      </a>
+      <a class="btn btn-ghost" href={site.mapsHref} target="_blank" rel="noopener">
+        <Icon name="i-pin" />{t("hero.directions")}
+      </a>
+    </div>
+    <ul class="hero-meta">
+      <li><Icon name="i-shield" />{t("hero.rating")}</li>
+      <li><Icon name="i-pin" />{t("hero.where")}</li>
+    </ul>
+  </div>
+  <a class="scroll-cue" href={localePath("/#about", lang)} aria-label={t("hero.scroll")}>
+    <Icon name="i-arrow" />
+  </a>
+</section>
+
+<script>
+  // Autoplay can be refused (battery saver, background tab) — nudge it and fail quietly to the poster.
+  const video = document.getElementById("hero-video") as HTMLVideoElement | null;
+  if (video && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    video.muted = true;
+    const tryPlay = () => video.play().catch(() => {});
+    tryPlay();
+    document.addEventListener("visibilitychange", () => !document.hidden && tryPlay());
+    window.addEventListener("pointerdown", tryPlay, { once: true });
+  }
+</script>
+
+<script>
+  // Typewriter on the second headline line: cycles through the phrases in data-phrases.
+  const typed = document.getElementById("hero-typed");
+  const caret = document.getElementById("hero-caret");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (typed && caret && !reduce) {
+    const phrases: string[] = JSON.parse(typed.dataset.phrases ?? "[]");
+    const chars = (s: string) => Array.from(s); // keeps Devanagari/Bengali clusters intact
+    let pi = 0;
+    let ci = chars(phrases[0] ?? "").length;
+    let deleting = false;
+    let blink = 0;
+
+    // Blink the caret by toggling visibility (no CSS animation — keeps the
+    // gradient-clipped heading painting correctly).
+    setInterval(() => {
+      blink ^= 1;
+      caret.style.visibility = blink ? "hidden" : "visible";
+    }, 480);
+
+    const tick = () => {
+      const full = chars(phrases[pi] ?? "");
+      if (!deleting) {
+        ci++;
+        typed.textContent = full.slice(0, ci).join("");
+        if (ci >= full.length) {
+          deleting = true;
+          setTimeout(tick, 2400);
+          return;
+        }
+        setTimeout(tick, 55 + Math.random() * 50);
+      } else {
+        ci--;
+        typed.textContent = full.slice(0, ci).join("");
+        if (ci <= 0) {
+          deleting = false;
+          pi = (pi + 1) % phrases.length;
+          setTimeout(tick, 350);
+          return;
+        }
+        setTimeout(tick, 30);
+      }
+    };
+    // Start after the hero has faded in.
+    setTimeout(tick, 3200);
+  }
+</script>

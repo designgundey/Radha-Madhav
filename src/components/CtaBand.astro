@@ -1,0 +1,106 @@
+---
+import Icon from "./Icon.astro";
+import { site } from "../data/site";
+import { getLang, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+// Background montage (from the "Pharmacy homepage video" design): clips cross-fade in order.
+const clips = [1, 2, 3, 4, 5, 6, 7].map((n) => `/videos/cta/clip-${n}.mp4`);
+---
+
+<section class="cta-band" aria-labelledby="cta-title">
+  <div class="wrap">
+    <div class="cta-card has-montage" data-reveal="scale">
+      <div class="montage" id="cta-montage" data-clips={JSON.stringify(clips)} aria-hidden="true">
+        <img
+          class="montage-poster"
+          src="/images/cta-poster.jpg"
+          alt=""
+          loading="lazy"
+          decoding="async"
+        />
+        <video class="montage-layer" muted playsinline preload="none"></video>
+        <video class="montage-layer" muted playsinline preload="none"></video>
+      </div>
+      <div class="cta-content">
+        <p class="eyebrow" style="justify-content:center">{t("cta.eyebrow")}</p>
+        <h2 id="cta-title">{t("cta.title")}</h2>
+        <p>{t("cta.text")}</p>
+        <div class="actions">
+          <a class="btn btn-primary" href={site.phoneHref}><Icon name="i-phone" />{t("cta.call")}</a
+          >
+          <a class="btn btn-ghost" href={site.whatsappHref} target="_blank" rel="noopener">
+            <Icon name="i-whatsapp" />{t("cta.whatsapp")}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Two stacked <video> layers; the next clip preloads on the hidden layer and
+  // cross-fades in (1.6s) shortly before the current one ends. Starts only when
+  // the band scrolls into view; skipped for reduced-motion users.
+  const host = document.getElementById("cta-montage");
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (host && !reduce) {
+    const clips: string[] = JSON.parse(host.dataset.clips ?? "[]");
+    const layers = Array.from(host.querySelectorAll<HTMLVideoElement>(".montage-layer"));
+    const FADE = 1600;
+    let index = 0;
+    let active = 0;
+    let started = false;
+
+    const load = (video: HTMLVideoElement, src: string) =>
+      new Promise<void>((resolve) => {
+        video.src = src;
+        video.load();
+        video.addEventListener("canplay", () => resolve(), { once: true });
+        setTimeout(resolve, 4000); // don't stall the loop on a slow network
+      });
+
+    const showNext = async () => {
+      const next = 1 - active;
+      const current = layers[active];
+      const incoming = layers[next];
+      await load(incoming, clips[index % clips.length]);
+      index++;
+      incoming.currentTime = 0;
+      await incoming.play().catch(() => {});
+      incoming.classList.add("on");
+      current.classList.remove("on");
+      host.classList.add("playing");
+      active = next;
+      // Swap a little before the clip ends so the fade overlaps the tail.
+      const dur =
+        Number.isFinite(incoming.duration) && incoming.duration > 2 ? incoming.duration : 7;
+      setTimeout(
+        () => {
+          current.pause();
+          showNext();
+        },
+        Math.max(2500, dur * 1000 - FADE),
+      );
+    };
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((e) => e.isIntersecting) && !started) {
+          started = true;
+          io.disconnect();
+          showNext();
+        }
+      },
+      { rootMargin: "300px" },
+    );
+    io.observe(host);
+    // Pause the montage when the tab is hidden, resume when back.
+    document.addEventListener("visibilitychange", () => {
+      const v = layers[active];
+      if (document.hidden) v.pause();
+      else v.play().catch(() => {});
+    });
+  }
+</script>

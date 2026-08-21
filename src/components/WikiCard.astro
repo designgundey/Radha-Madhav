@@ -1,0 +1,25 @@
+---
+import Icon from "./Icon.astro";
+import type { WikiEntry } from "../data/wiki";
+
+interface Props {
+  entry: WikiEntry;
+  index?: number;
+}
+
+const { entry, index = 0 } = Astro.props;
+const textId = `wiki-text-${entry.id}`;
+---
+
+<div class="wiki-card" data-reveal style={`--reveal-delay:${(index % 3) * 100}ms`}>
+  <div>
+    <div class="wiki-title-np">{entry.titleNp}</div>
+    <div class="wiki-title-en">{entry.titleEn}</div>
+  </div>
+  <p class="wiki-text" id={textId}>{entry.text}</p>
+  <p class="wiki-gloss">{entry.gloss}</p>
+  <button type="button" class="listen-btn" data-target={textId} data-speaking="false">
+    <Icon name="i-speaker" />
+    <span>सुन्नुहोस् (Listen)</span>
+  </button>
+</div>

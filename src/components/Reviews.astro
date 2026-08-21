@@ -1,0 +1,103 @@
+---
+import Icon from "./Icon.astro";
+import Stars from "./Stars.astro";
+import { reviews, reviewHighlights, type Review } from "../data/reviews";
+import { site } from "../data/site";
+import { getLang, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+
+// Pool of cards: every written review plus Google's own "review highlights"
+// (shown as quotes without a name). Add more reviews to src/data/reviews.ts
+// and the newest take the single row (top 3 shown + a write-a-review card).
+const pool: Review[] = [
+  ...reviews,
+  ...reviewHighlights.map((q) => ({
+    name: t("reviews.highlight"),
+    rating: 5 as const,
+    when: t("reviews.fromListing"),
+    text: q,
+  })),
+];
+const MAX = 3; // one row: 3 reviews + the write-a-review card
+const shown = pool.slice(0, MAX);
+const showCta = shown.length <= MAX;
+---
+
+<section id="reviews">
+  <div class="wrap">
+    <div class="reviews-head" data-reveal>
+      <div>
+        <p class="eyebrow">{t("reviews.eyebrow")}</p>
+        <h2>{t("reviews.title")}</h2>
+        <ul class="highlights">
+          {reviewHighlights.map((q) => <li>“{q}”</li>)}
+        </ul>
+      </div>
+      <a class="rating-card" href={site.google.reviewsHref} target="_blank" rel="noopener">
+        <span class="rating-num">{site.google.rating}</span>
+        <Stars value={site.google.rating} class="big" />
+        <span class="rating-meta">{site.google.reviewCount} {t("reviews.count")}</span>
+        <span class="g-mark" aria-hidden="true">G</span>
+      </a>
+    </div>
+
+    <div class="review-grid">
+      {
+        shown.map((r, i) => (
+          <article class="review-card" data-reveal style={`--reveal-delay:${(i % 4) * 90}ms`}>
+            <div class="review-top">
+              <span class="review-avatar" aria-hidden="true">
+                {r.name[0]}
+              </span>
+              <div>
+                <strong>{r.name}</strong>
+                <span class="review-when">{r.when}</span>
+              </div>
+              <Stars value={r.rating} />
+            </div>
+            <p class="review-text">{r.text}</p>
+            {r.ownerReply && (
+              <p class="owner-reply">
+                <span>{t("reviews.reply")}</span>
+                {r.ownerReply}
+              </p>
+            )}
+          </article>
+        ))
+      }
+      {
+        showCta && (
+          <a
+            class="review-card review-cta"
+            href={site.google.writeReviewHref}
+            target="_blank"
+            rel="noopener"
+            data-reveal
+            style={`--reveal-delay:${shown.length * 90}ms`}
+          >
+            <span class="review-avatar" aria-hidden="true">
+              +
+            </span>
+            <strong>{t("reviews.ctaTitle")}</strong>
+            <p>{t("reviews.ctaText")}</p>
+            <span class="footer-link">
+              {t("reviews.write")} <Icon name="i-arrow" />
+            </span>
+          </a>
+        )
+      }
+    </div>
+
+    <div class="reviews-actions" data-reveal>
+      <a class="btn btn-primary" href={site.google.writeReviewHref} target="_blank" rel="noopener">
+        <Icon name="i-chat" />{t("reviews.write")}
+      </a>
+      <a class="btn btn-ghost" href={site.google.reviewsHref} target="_blank" rel="noopener">
+        {t("reviews.all")}
+        <Icon name="i-arrow" />
+      </a>
+    </div>
+  </div>
+</section>

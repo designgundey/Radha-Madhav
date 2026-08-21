@@ -1,0 +1,81 @@
+---
+import Icon from "./Icon.astro";
+import PlaceMap from "./PlaceMap.astro";
+import { site } from "../data/site";
+import { getLang, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+const hours = [
+  { label: t("hours.1"), value: t("hours.1v") },
+  { label: t("hours.2"), value: t("hours.2v") },
+  { label: t("hours.3"), value: t("hours.3v") },
+];
+---
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="eyebrow">{t("contact.eyebrow")}</p>
+      <h2>{t("contact.title")}</h2>
+      <p>{t("contact.sub")}</p>
+    </div>
+    <div class="contact-grid">
+      <div data-reveal="left">
+        <h3 class="profile-label">{t("contact.reach")}</h3>
+        <div class="contact-buttons">
+          <a class="contact-btn" href={site.phoneHref}>
+            <span class="contact-btn-icon"><Icon name="i-phone" /></span>
+            <span>
+              <strong>{t("contact.callBtn")}</strong>
+              <small>{site.phoneDisplay}</small>
+            </span>
+          </a>
+          <a class="contact-btn wa" href={site.whatsappHref} target="_blank" rel="noopener">
+            <span class="contact-btn-icon"><Icon name="i-whatsapp" /></span>
+            <span>
+              <strong>{t("contact.waBtn")}</strong>
+              <small>{site.whatsappDisplay}</small>
+            </span>
+          </a>
+          <a class="contact-btn" href={`mailto:${site.email}`}>
+            <span class="contact-btn-icon"><Icon name="i-mail" /></span>
+            <span>
+              <strong>{t("contact.emailBtn")}</strong>
+              <small>{site.email}</small>
+            </span>
+          </a>
+        </div>
+
+        <ul class="contact-list">
+          <li>
+            <Icon name="i-pin" />
+            <div>
+              <strong>{t("contact.address")}</strong>
+              <span>{t("address.full")}</span>
+              <small class="plus-code">{site.plusCode}</small>
+            </div>
+          </li>
+        </ul>
+        <span class="sample-tag">{t("contact.sample")}</span>
+      </div>
+      <div class="contact-side" data-reveal="right">
+        <PlaceMap class="map-card" title={t("contact.mapTitle")} />
+        <div class="hours-card">
+          <h3><Icon name="i-clock" />{t("contact.hours")}</h3>
+          {
+            hours.map((row) => (
+              <div class="hours-row">
+                <span>{row.label}</span>
+                <span>{row.value}</span>
+              </div>
+            ))
+          }
+        </div>
+        <a class="btn btn-primary btn-block" href={site.mapsHref} target="_blank" rel="noopener">
+          <Icon name="i-pin" />{t("contact.maps")}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

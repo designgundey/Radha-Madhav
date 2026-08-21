@@ -1,0 +1,69 @@
+---
+import Icon from "./Icon.astro";
+import { initials, type Doctor } from "../data/doctors";
+import { site } from "../data/site";
+import { getLang, l, localePath, useT } from "../i18n";
+
+interface Props {
+  doctor: Doctor;
+}
+
+const { doctor } = Astro.props;
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+const name = l(doctor.name, lang);
+const days = doctor.availability.map((a) => t(`day.${a.day}`)).join(" · ");
+---
+
+<div class:list={["doctor-card", "has-photo", { slot: doctor.isPlaceholder }]}>
+  <div class="doctor-photo">
+    <img
+      src={doctor.photo}
+      alt={`${t("doctor.portrait")} ${name}`}
+      loading="lazy"
+      decoding="async"
+      width="600"
+      height="600"
+    />
+    {
+      doctor.isPlaceholder ? (
+        <span class="tbc photo-tag">{t("doctor.comingSoon")}</span>
+      ) : (
+        doctor.photoIsPlaceholder && <span class="tbc photo-tag">{t("doctor.samplePhoto")}</span>
+      )
+    }
+  </div>
+  <div class="doctor-top">
+    <div class="doctor-avatar" aria-hidden="true">{initials(doctor.name.en)}</div>
+    <div>
+      <div class="doctor-name">{name}</div>
+      <div class="doctor-spec">{l(doctor.specialty, lang)}</div>
+    </div>
+  </div>
+  <p class="doctor-summary">{l(doctor.summary, lang)}</p>
+  <div class="doctor-meta">
+    <span><Icon name="i-pin" />{l(doctor.location, lang)}</span>
+    {
+      !doctor.isPlaceholder && (
+        <span>
+          <Icon name="i-clock" />
+          {days}
+          {!doctor.timingsConfirmed && <em class="tbc">{t("doctor.tbc")}</em>}
+        </span>
+      )
+    }
+  </div>
+  {
+    doctor.isPlaceholder ? (
+      <a class="btn btn-ghost btn-sm" href={site.phoneHref}>
+        <Icon name="i-phone" />
+        {t("doctor.askCounter")}
+      </a>
+    ) : (
+      <a class="btn btn-ghost btn-sm" href={localePath(`/doctors/#${doctor.slug}`, lang)}>
+        {t("doctor.profile")}
+        <Icon name="i-arrow" />
+      </a>
+    )
+  }
+</div>

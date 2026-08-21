@@ -1,0 +1,35 @@
+---
+import Icon from "./Icon.astro";
+
+interface Props {
+  src: string;
+  alt: string;
+  badgeIcon?: string;
+  badgePos?: "br" | "bl";
+  secondIcon?: string;
+}
+
+const { src, alt, badgeIcon, badgePos = "br", secondIcon } = Astro.props;
+---
+
+<div class="medallion" data-reveal="scale">
+  <div class="medallion-ring two" aria-hidden="true"></div>
+  <div class="medallion-ring" aria-hidden="true"></div>
+  <div class="medallion-img">
+    <img src={src} alt={alt} loading="lazy" decoding="async" width="840" height="840" />
+  </div>
+  {
+    badgeIcon && (
+      <div class={`badge ${badgePos}`} aria-hidden="true">
+        <Icon name={badgeIcon} />
+      </div>
+    )
+  }
+  {
+    secondIcon && (
+      <div class="badge sm tr" aria-hidden="true">
+        <Icon name={secondIcon} />
+      </div>
+    )
+  }
+</div>

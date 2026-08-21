@@ -1,0 +1,111 @@
+---
+import Icon from "./Icon.astro";
+import Stars from "./Stars.astro";
+import PlaceMap from "./PlaceMap.astro";
+import { site } from "../data/site";
+import { getLang, localePath, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+const p = (path: string) => localePath(path, lang);
+
+const navLinks = [
+  { href: p("/about/"), label: t("nav.about") },
+  { href: p("/services/"), label: t("nav.services") },
+  { href: p("/doctors/"), label: t("nav.doctors") },
+  { href: p("/#videos"), label: t("nav.videos") },
+  { href: p("/about/#gallery"), label: t("nav.gallery") },
+  { href: p("/#reviews"), label: t("nav.reviews") },
+  { href: p("/#contact"), label: t("nav.contact") },
+];
+const hours = [
+  { label: t("hours.1"), value: t("hours.1v") },
+  { label: t("hours.2"), value: t("hours.2v") },
+  { label: t("hours.3"), value: t("hours.3v") },
+];
+const year = new Date().getFullYear();
+---
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-col footer-about">
+        <a class="footer-brand" href={p("/")} aria-label={site.name}>
+          <img src="/images/logo-light.svg" alt={site.name} width="76" height="40" />
+        </a>
+        <p>{t("footer.about")}</p>
+        <a class="footer-phone" href={site.phoneHref}>
+          <span>{t("footer.call")}</span>
+          <strong>{site.phoneDisplay}</strong>
+        </a>
+        <a class="footer-rating" href={site.google.reviewsHref} target="_blank" rel="noopener">
+          <Stars value={site.google.rating} />
+          <span>{site.google.rating} · {site.google.reviewCount} {t("reviews.count")}</span>
+        </a>
+      </div>
+
+      <div class="footer-col">
+        <h3>{t("footer.visit")}</h3>
+        <address>
+          <span>{t("address.1")}</span>
+          <span>{t("address.2")}</span>
+          <span>{t("address.3")}</span>
+        </address>
+        <p class="plus-code"><Icon name="i-pin" />{site.plusCode}</p>
+        <a class="footer-link" href={site.mapsHref} target="_blank" rel="noopener">
+          {t("footer.maps")}
+          <Icon name="i-arrow" />
+        </a>
+      </div>
+
+      <div class="footer-col">
+        <h3>{t("footer.hours")}</h3>
+        <ul class="footer-hours">
+          {
+            hours.map((row) => (
+              <li>
+                <span>{row.label}</span>
+                <strong>{row.value}</strong>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h3>{t("footer.explore")}</h3>
+        <nav aria-label="Footer">
+          <ul>
+            {
+              navLinks.map((link) => (
+                <li>
+                  <a href={link.href}>{link.label}</a>
+                </li>
+              ))
+            }
+          </ul>
+        </nav>
+      </div>
+    </div>
+
+    <a
+      class="footer-map"
+      href={site.mapsHref}
+      target="_blank"
+      rel="noopener"
+      aria-label={t("footer.mapAria")}
+    >
+      <PlaceMap title={t("contact.mapTitle")} />
+      <span class="footer-map-pill"><Icon name="i-pin" />{t("place.short")}</span>
+    </a>
+
+    <div class="footer-bottom">
+      <span>© {year} {site.name}, Mirik.</span>
+      <span>{t("footer.tag")}</span>
+      <span class="credit">
+        {t("footer.credit")}
+        <a href="https://www.1947.io" target="_blank" rel="noopener">Studio 1947</a>
+      </span>
+    </div>
+  </div>
+</footer>

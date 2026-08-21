@@ -1,0 +1,28 @@
+---
+import ServiceCard from "./ServiceCard.astro";
+import { services } from "../data/services";
+import Icon from "./Icon.astro";
+import { getLang, localePath, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+---
+
+<section id="services">
+  <div class="wrap">
+    <div class="section-head center" data-reveal>
+      <p class="eyebrow">{t("services.eyebrow")}</p>
+      <h2>{t("services.title")}</h2>
+      <p>{t("services.sub")}</p>
+    </div>
+    <div class="grid-3">
+      {services.map((service, i) => <ServiceCard service={service} index={i} />)}
+    </div>
+    <div class="reviews-actions" data-reveal>
+      <a class="btn btn-ghost" href={localePath("/services/", lang)}>
+        {t("services.all")}
+        <Icon name="i-arrow" />
+      </a>
+    </div>
+  </div>
+</section>

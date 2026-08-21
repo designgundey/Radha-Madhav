@@ -1,0 +1,104 @@
+---
+import Icon from "./Icon.astro";
+import { doctorVideos, youtubeId } from "../data/videos";
+import { doctors } from "../data/doctors";
+import { site } from "../data/site";
+import { getLang, l, localePath, useT } from "../i18n";
+
+const lang = getLang(Astro.currentLocale);
+const t = useT(lang);
+const bySlug = new Map(doctors.map((d) => [d.slug, d]));
+---
+
+<section id="videos">
+  <div class="wrap">
+    <div class="section-head center" data-reveal>
+      <p class="eyebrow">{t("videos.eyebrow")}</p>
+      <h2>{t("videos.title")}</h2>
+      <p>{t("videos.sub")}</p>
+    </div>
+
+    <div class="reel-grid">
+      {
+        doctorVideos.map((v, i) => {
+          const doc = bySlug.get(v.doctorSlug);
+          const yt = v.platform === "youtube" ? youtubeId(v.src) : null;
+          return (
+            <article class="reel-card" data-reveal style={`--reveal-delay:${(i % 2) * 110}ms`}>
+              <div class="phone">
+                <div class="phone-screen">
+                  {yt && (
+                    <iframe
+                      src={`https://www.youtube-nocookie.com/embed/${yt}?rel=0&modestbranding=1&playsinline=1`}
+                      title={l(v.title, lang)}
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                    />
+                  )}
+                  {v.platform === "mp4" && (
+                    <video src={v.src} poster={v.poster} controls playsinline preload="none" />
+                  )}
+                  {(v.platform === "instagram" || v.platform === "none") && (
+                    <a
+                      class="reel-poster"
+                      href={
+                        v.platform === "instagram"
+                          ? v.src
+                          : localePath(`/doctors/#${v.doctorSlug}`, lang)
+                      }
+                      target={v.platform === "instagram" ? "_blank" : undefined}
+                      rel={v.platform === "instagram" ? "noopener" : undefined}
+                      aria-label={l(v.title, lang)}
+                    >
+                      <img
+                        src={v.poster}
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                        width="360"
+                        height="640"
+                      />
+                      <span class="play" aria-hidden="true">
+                        <Icon name="i-play" />
+                      </span>
+                      <span class="reel-watch">
+                        {v.platform === "instagram" ? t("videos.watchIg") : t("videos.comingSoon")}
+                      </span>
+                    </a>
+                  )}
+                </div>
+              </div>
+
+              <div class="reel-body">
+                {doc && (
+                  <div class="reel-doc">
+                    <img src={doc.photo} alt="" width="36" height="36" loading="lazy" />
+                    <span>
+                      <strong>{l(doc.name, lang)}</strong>
+                      <small>{l(doc.specialty, lang)}</small>
+                    </span>
+                  </div>
+                )}
+                <h3>{l(v.title, lang)}</h3>
+                <p>{l(v.description, lang)}</p>
+                <div class="actions">
+                  <a
+                    class="btn btn-ghost btn-sm"
+                    href={localePath(`/doctors/#${v.doctorSlug}`, lang)}
+                  >
+                    {t("videos.know")} <Icon name="i-arrow" />
+                  </a>
+                  <a class="btn btn-primary btn-sm" href={site.phoneHref}>
+                    <Icon name="i-phone" />
+                    {t("videos.talk")}
+                  </a>
+                </div>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
