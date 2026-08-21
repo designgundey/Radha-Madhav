@@ -12,7 +12,8 @@ const { doctor } = Astro.props;
 const lang = getLang(Astro.currentLocale);
 const t = useT(lang);
 const name = l(doctor.name, lang);
-const days = doctor.availability.map((a) => t(`day.${a.day}`)).join(" · ");
+const days =
+  doctor.availability.map((a) => t(`day.${a.day}`)).join(" · ") || t("doctor.callTimings");
 ---
 
 <div class:list={["doctor-card", "has-photo", { slot: doctor.isPlaceholder }]}>

@@ -171,8 +171,8 @@ export const doctors: Doctor[] = [
   },
   {
     slug: "saurav-sardar",
-    photo: "/images/doctor-4.jpg",
-    photoIsPlaceholder: true,
+    photo: "/images/saurav-sardar.jpg",
+    photoIsPlaceholder: false,
     name: { en: "Dr. Saurav Sardar", ne: "डा. सौरभ सरदार", bn: "ডা. সৌরভ সর্দার" },
     specialty: GM,
     location: CABIN,
@@ -212,28 +212,35 @@ export const doctors: Doctor[] = [
     timingsConfirmed: false,
     languages: ["Bengali", "Hindi", "English"],
   },
-];
-
-/** Reserved homepage slots. Replace with real doctors (copy an entry above) and delete these. */
-export const upcomingSlots: Doctor[] = [
   {
-    slug: "slot-paediatrics",
-    isPlaceholder: true,
-    photo: "/images/doctor-scrubs.jpg",
-    photoIsPlaceholder: true,
-    name: { en: "Paediatrician", ne: "बाल रोग विशेषज्ञ", bn: "শিশুরোগ বিশেষজ্ঞ" },
-    specialty: { en: "Child health", ne: "बाल स्वास्थ्य", bn: "শিশু স্বাস্থ্য" },
+    slug: "nayeem-ali",
+    photo: "/images/nayeem-ali.jpg",
+    photoIsPlaceholder: false,
+    name: { en: "Dr. Nayeem Ali", ne: "डा. नईम अली", bn: "ডা. নঈম আলি" },
+    specialty: {
+      en: "Specialty to be confirmed",
+      ne: "विशेषज्ञता पुष्टि हुन बाँकी",
+      bn: "বিশেষত্ব নিশ্চিত হওয়া বাকি",
+    },
     location: CABIN,
     summary: {
-      en: "A visiting paediatrician is being added. Call the counter for the latest schedule.",
-      ne: "बाल रोग विशेषज्ञ थपिँदै छ। पछिल्लो तालिकाका लागि काउन्टरमा फोन गर्नुहोस्।",
-      bn: "একজন শিশুরোগ বিশেষজ্ঞ যুক্ত হচ্ছেন। সর্বশেষ সময়সূচির জন্য কাউন্টারে কল করুন।",
+      en: "Consults at Radhamadhav Medical Hall. Details and timings coming soon.",
+      ne: "राधामाधव मेडिकल हलमा परामर्श दिनुहुन्छ। विवरण र समय चाँडै आउँदैछ।",
+      bn: "রাধামাধব মেডিক্যাল হলে পরামর্শ দেন। বিবরণ ও সময় শিগগিরই আসছে।",
     },
-    bio: { en: "", ne: "", bn: "" },
+    bio: {
+      en: "Dr. Nayeem Ali is one of the visiting doctors at the hall. His specialty, areas of focus and weekly timings will be listed here once confirmed. Call the counter to book.",
+      ne: "डा. नईम अली हलमा आउने डाक्टरहरूमध्ये एक हुनुहुन्छ। उहाँको विशेषज्ञता, फोकस क्षेत्र र साप्ताहिक समय पुष्टि भएपछि यहाँ राखिनेछ। बुक गर्न काउन्टरमा फोन गर्नुहोस्।",
+      bn: "ডা. নঈম আলি হলের আগত ডাক্তারদের একজন। তাঁর বিশেষত্ব, ফোকাসের ক্ষেত্র ও সাপ্তাহিক সময় নিশ্চিত হলে এখানে দেওয়া হবে। বুক করতে কাউন্টারে কল করুন।",
+    },
     skills: [],
     availability: [],
     timingsConfirmed: false,
   },
+];
+
+/** Reserved homepage slots. Replace with real doctors (copy an entry above) and delete these. */
+export const upcomingSlots: Doctor[] = [
   {
     slug: "slot-gynaecology",
     isPlaceholder: true,

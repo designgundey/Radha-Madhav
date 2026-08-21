@@ -84,7 +84,7 @@ export const doctorVideos: DoctorVideo[] = [
     },
     platform: "none",
     src: "",
-    poster: "/images/doctor-4.jpg",
+    poster: "/images/saurav-sardar.jpg",
     isPlaceholder: true,
   },
 ];

@@ -26,78 +26,73 @@ const hours = [
 const year = new Date().getFullYear();
 ---
 
-<footer class="site">
+<footer class="site footer-v2">
+  <div class="footer-bg" aria-hidden="true">
+    <PlaceMap title={t("contact.mapTitle")} />
+    <span class="footer-ghost">{site.name.split(" ")[0]}</span>
+  </div>
   <div class="wrap">
-    <div class="footer-grid">
-      <div class="footer-col footer-about">
-        <a class="footer-brand" href={p("/")} aria-label={site.name}>
-          <img src="/images/logo-light.svg" alt={site.name} width="76" height="40" />
-        </a>
-        <p>{t("footer.about")}</p>
-        <a class="footer-phone" href={site.phoneHref}>
-          <span>{t("footer.call")}</span>
-          <strong>{site.phoneDisplay}</strong>
-        </a>
-        <a class="footer-rating" href={site.google.reviewsHref} target="_blank" rel="noopener">
-          <Stars value={site.google.rating} />
-          <span>{site.google.rating} · {site.google.reviewCount} {t("reviews.count")}</span>
-        </a>
-      </div>
+    <div class="footer-panel">
+      <div class="footer-grid">
+        <div class="footer-col footer-about">
+          <a class="footer-brand" href={p("/")} aria-label={site.name}>
+            <img src="/images/logo-light.svg" alt={site.name} width="76" height="40" />
+          </a>
+          <p>{t("footer.about")}</p>
+          <a class="footer-phone" href={site.phoneHref}>
+            <span>{t("footer.call")}</span>
+            <strong>{site.phoneDisplay}</strong>
+          </a>
+          <a class="footer-rating" href={site.google.reviewsHref} target="_blank" rel="noopener">
+            <Stars value={site.google.rating} />
+            <span>{site.google.rating} · {site.google.reviewCount} {t("reviews.count")}</span>
+          </a>
+        </div>
 
-      <div class="footer-col">
-        <h3>{t("footer.visit")}</h3>
-        <address>
-          <span>{t("address.1")}</span>
-          <span>{t("address.2")}</span>
-          <span>{t("address.3")}</span>
-        </address>
-        <p class="plus-code"><Icon name="i-pin" />{site.plusCode}</p>
-        <a class="footer-link" href={site.mapsHref} target="_blank" rel="noopener">
-          {t("footer.maps")}
-          <Icon name="i-arrow" />
-        </a>
-      </div>
+        <div class="footer-col">
+          <h3>{t("footer.visit")}</h3>
+          <address>
+            <span>{t("address.1")}</span>
+            <span>{t("address.2")}</span>
+            <span>{t("address.3")}</span>
+          </address>
+          <p class="plus-code"><Icon name="i-pin" />{site.plusCode}</p>
+          <a class="footer-link" href={site.mapsHref} target="_blank" rel="noopener">
+            {t("footer.maps")}
+            <Icon name="i-arrow" />
+          </a>
+        </div>
 
-      <div class="footer-col">
-        <h3>{t("footer.hours")}</h3>
-        <ul class="footer-hours">
-          {
-            hours.map((row) => (
-              <li>
-                <span>{row.label}</span>
-                <strong>{row.value}</strong>
-              </li>
-            ))
-          }
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h3>{t("footer.explore")}</h3>
-        <nav aria-label="Footer">
-          <ul>
+        <div class="footer-col">
+          <h3>{t("footer.hours")}</h3>
+          <ul class="footer-hours">
             {
-              navLinks.map((link) => (
+              hours.map((row) => (
                 <li>
-                  <a href={link.href}>{link.label}</a>
+                  <span>{row.label}</span>
+                  <strong>{row.value}</strong>
                 </li>
               ))
             }
           </ul>
-        </nav>
+        </div>
+
+        <div class="footer-col">
+          <h3>{t("footer.explore")}</h3>
+          <nav aria-label="Footer">
+            <ul>
+              {
+                navLinks.map((link) => (
+                  <li>
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                ))
+              }
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
-
-    <a
-      class="footer-map"
-      href={site.mapsHref}
-      target="_blank"
-      rel="noopener"
-      aria-label={t("footer.mapAria")}
-    >
-      <PlaceMap title={t("contact.mapTitle")} />
-      <span class="footer-map-pill"><Icon name="i-pin" />{t("place.short")}</span>
-    </a>
 
     <div class="footer-bottom">
       <span>© {year} {site.name}, Mirik.</span>

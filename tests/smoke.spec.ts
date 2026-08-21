@@ -12,13 +12,13 @@ test.describe("homepage smoke test", () => {
     }
   });
 
-  test("lists six doctor cards (4 doctors + 2 reserved slots) and three health-wiki teasers", async ({
+  test("lists six doctor cards (5 doctors + 1 reserved slot) and three health-wiki teasers", async ({
     page,
   }) => {
     await page.goto("/");
 
     await expect(page.locator("#doctors .doctor-card")).toHaveCount(6);
-    await expect(page.locator("#doctors .doctor-card.slot")).toHaveCount(2);
+    await expect(page.locator("#doctors .doctor-card.slot")).toHaveCount(1);
     await expect(page.locator("#wiki-grid .wiki-card")).toHaveCount(3);
   });
 
@@ -52,7 +52,7 @@ test.describe("homepage smoke test", () => {
     await page.goto("/doctors/");
 
     await expect(page.getByRole("heading", { level: 1 })).toContainText("visiting doctors");
-    await expect(page.locator(".profile")).toHaveCount(4);
+    await expect(page.locator(".profile")).toHaveCount(5);
     await expect(page.locator("#richard-narjinary .skill-list li").first()).toBeVisible();
     await expect(page.locator("#richard-narjinary .week-day.on")).toHaveCount(1);
   });
@@ -76,7 +76,7 @@ test.describe("homepage smoke test", () => {
 
     await page.goto("/bn/doctors/");
     await expect(page.locator("html")).toHaveAttribute("lang", "bn");
-    await expect(page.locator(".profile")).toHaveCount(4);
+    await expect(page.locator(".profile")).toHaveCount(5);
   });
 
   test("services page lists the expanded service catalogue", async ({ page }) => {

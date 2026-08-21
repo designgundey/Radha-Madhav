@@ -47,10 +47,18 @@ const byDay = new Map(doctor.availability.map((a) => [a.day, a.time]));
   <div class="profile-body">
     <p class="profile-bio">{l(doctor.bio, lang)}</p>
 
-    <h3 class="profile-label">{t("doctor.skills")}</h3>
-    <ul class="skill-list">
-      {doctor.skills.map((skill) => <li>{l(skill, lang)}</li>)}
-    </ul>
+    {
+      doctor.skills.length > 0 && (
+        <>
+          <h3 class="profile-label">{t("doctor.skills")}</h3>
+          <ul class="skill-list">
+            {doctor.skills.map((skill) => (
+              <li>{l(skill, lang)}</li>
+            ))}
+          </ul>
+        </>
+      )
+    }
 
     <h3 class="profile-label">
       {t("doctor.availability")}
