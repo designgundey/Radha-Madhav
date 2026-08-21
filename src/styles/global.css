@@ -3366,3 +3366,70 @@ html[data-lang="bn"] .hero h1 {
     padding-top: 130px;
   }
 }
+
+/* ---------- Legacy collage (homepage) ---------- */
+.legacy-collage {
+  position: relative;
+  width: min(100%, 520px);
+  margin-inline: auto;
+  padding: 48px 92px 0 88px;
+}
+.legacy-collage .legacy-main {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+}
+.legacy-float {
+  position: absolute;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.55);
+  box-shadow: var(--shadow);
+  background: var(--surface-sunk);
+  transition: transform 0.5s var(--ease-out);
+}
+.legacy-float img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  display: block;
+}
+.legacy-float-tr {
+  top: 0;
+  right: 0;
+  width: 42%;
+  aspect-ratio: 1;
+}
+.legacy-float-bl {
+  left: 0;
+  bottom: 22%;
+  width: 36%;
+  aspect-ratio: 1;
+}
+.legacy-collage:hover .legacy-float-tr {
+  transform: translate(4px, -6px) rotate(1.5deg);
+}
+.legacy-collage:hover .legacy-float-bl {
+  transform: translate(-4px, 6px) rotate(-1.5deg);
+}
+@media (max-width: 760px) {
+  .legacy-collage {
+    padding: 32px 52px 0 44px;
+  }
+  .legacy-float-tr {
+    width: 40%;
+  }
+  .legacy-float-bl {
+    width: 34%;
+    bottom: 44%;
+  }
+  .legacy-collage .legacy-caption {
+    left: 16px;
+    right: 16px;
+    bottom: 14px;
+  }
+  .legacy-collage .legacy-caption strong {
+    font-size: 1.05rem;
+  }
+}

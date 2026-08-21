@@ -1,6 +1,6 @@
 ---
 import Icon from "./Icon.astro";
-import { founder, cofounder, timeline } from "../data/legacy";
+import { founder, cofounder, custodian, timeline } from "../data/legacy";
 import { getLang, l, localePath, useT } from "../i18n";
 
 const lang = getLang(Astro.currentLocale);
@@ -11,20 +11,41 @@ const last = timeline[timeline.length - 1];
 
 <section id="legacy">
   <div class="wrap split">
-    <div class="legacy-portrait" data-reveal="scale">
-      <img
-        src={founder.photo}
-        alt={l(founder.name, lang)}
-        loading="lazy"
-        decoding="async"
-        width="720"
-        height="900"
-      />
-      {founder.photoIsPlaceholder && <span class="tbc photo-tag">{t("about.samplePhoto")}</span>}
-      <div class="legacy-caption">
-        <strong>{l(founder.name, lang)}</strong>
-        <span>{l(founder.role, lang)}</span>
-        <small>+ {l(cofounder.name, lang)}, {l(cofounder.role, lang).split(".")[0]}</small>
+    <div class="legacy-collage" data-reveal="scale">
+      <div class="legacy-portrait legacy-main">
+        <img
+          src={founder.photo}
+          alt={l(founder.name, lang)}
+          loading="lazy"
+          decoding="async"
+          width="720"
+          height="900"
+        />
+        <div class="legacy-caption">
+          <strong>{l(founder.name, lang)}</strong>
+          <span>{l(founder.role, lang)}</span>
+          <small>+ {l(cofounder.name, lang)}, {l(cofounder.role, lang).split(".")[0]}</small>
+        </div>
+      </div>
+      <div class="legacy-float legacy-float-tr">
+        <img
+          src={cofounder.photo}
+          alt={l(cofounder.name, lang)}
+          loading="lazy"
+          decoding="async"
+          width="420"
+          height="420"
+        />
+      </div>
+      <div class="legacy-float legacy-float-bl">
+        <img
+          src={custodian.photo}
+          alt={l(custodian.name, lang)}
+          loading="lazy"
+          decoding="async"
+          width="360"
+          height="360"
+        />
       </div>
     </div>
     <div class="split-copy" data-reveal="right">
