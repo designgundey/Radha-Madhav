@@ -3443,10 +3443,9 @@ footer.site.footer-v2 {
   position: relative;
   overflow: hidden;
   margin-top: 40px;
-  padding: 150px 0 28px;
+  padding: 120px 0 28px;
   border-top: none;
   background: var(--bg);
-  clip-path: ellipse(140% 100% at 50% 100%);
 }
 .footer-bg {
   position: absolute;
@@ -3530,8 +3529,7 @@ footer.site.footer-v2 {
 }
 @media (max-width: 760px) {
   footer.site.footer-v2 {
-    padding-top: 64px;
-    clip-path: ellipse(180% 100% at 50% 100%);
+    padding-top: 56px;
   }
   .footer-panel {
     padding: 28px 22px 20px;
