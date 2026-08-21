@@ -3174,3 +3174,133 @@ html[data-lang="bn"] .hero h1 {
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- Hover gloss: a diagonal sheen sweeps across cards and photos ---------- */
+.card,
+.doctor-card,
+.wiki-card,
+.review-card,
+.img-card,
+.team-card,
+.service-detail,
+.reel-card,
+.phone,
+.history-line li,
+.trust li,
+.contact-btn,
+.rating-card,
+.hours-card,
+.profile,
+.profile-photo,
+.legacy-portrait,
+.medallion-img,
+.cta-card,
+.fact-list li,
+.map-card,
+.footer-map {
+  position: relative;
+  overflow: hidden;
+}
+.card::after,
+.doctor-card::after,
+.wiki-card::after,
+.review-card::after,
+.img-card::after,
+.team-card::after,
+.service-detail::after,
+.reel-card::after,
+.phone::after,
+.history-line li::after,
+.trust li::after,
+.contact-btn::after,
+.rating-card::after,
+.hours-card::after,
+.profile::after,
+.profile-photo::after,
+.legacy-portrait::before,
+.medallion-img::before,
+.cta-card::after,
+.fact-list li::after,
+.map-card::after,
+.footer-map::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: inherit;
+  background: linear-gradient(
+    115deg,
+    transparent 35%,
+    rgba(255, 255, 255, 0.06) 44%,
+    rgba(255, 255, 255, 0.22) 50%,
+    rgba(255, 255, 255, 0.06) 56%,
+    transparent 65%
+  );
+  background-size: 250% 100%;
+  background-position: 180% 0;
+  opacity: 0;
+  transition:
+    background-position 0.9s var(--ease-out),
+    opacity 0.3s ease;
+}
+.card:hover::after,
+.doctor-card:hover::after,
+.wiki-card:hover::after,
+.review-card:hover::after,
+.img-card:hover::after,
+.team-card:hover::after,
+.service-detail:hover::after,
+.reel-card:hover::after,
+.phone:hover::after,
+.history-line li:hover::after,
+.trust li:hover::after,
+.contact-btn:hover::after,
+.rating-card:hover::after,
+.hours-card:hover::after,
+.profile:hover::after,
+.profile-photo:hover::after,
+.legacy-portrait:hover::before,
+.medallion-img:hover::before,
+.cta-card:hover::after,
+.fact-list li:hover::after,
+.map-card:hover::after,
+.footer-map:hover::after {
+  opacity: 1;
+  background-position: -80% 0;
+}
+/* the legacy portrait and medallion already use ::after for their tint; keep it below the sheen */
+.legacy-portrait::before,
+.medallion-img::before {
+  z-index: 3;
+}
+.legacy-portrait .legacy-caption,
+.legacy-portrait .photo-tag {
+  z-index: 2;
+}
+@media (prefers-reduced-motion: reduce), (hover: none) {
+  .card::after,
+  .doctor-card::after,
+  .wiki-card::after,
+  .review-card::after,
+  .img-card::after,
+  .team-card::after,
+  .service-detail::after,
+  .reel-card::after,
+  .phone::after,
+  .history-line li::after,
+  .trust li::after,
+  .contact-btn::after,
+  .rating-card::after,
+  .hours-card::after,
+  .profile::after,
+  .profile-photo::after,
+  .legacy-portrait::before,
+  .medallion-img::before,
+  .cta-card::after,
+  .fact-list li::after,
+  .map-card::after,
+  .footer-map::after {
+    display: none;
+  }
+}
