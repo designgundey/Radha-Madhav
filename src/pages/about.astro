@@ -14,7 +14,10 @@ const t = useT(lang);
   title={`${t("about.page")} | ${site.name} | Mirik, Darjeeling`}
   description={t("about.meta")}
 >
-  <section class="page-hero">
+  <section class="page-hero has-image">
+    <div class="page-hero-bg" aria-hidden="true">
+      <img src="/images/about-hero.jpg" alt="" fetchpriority="high" decoding="async" />
+    </div>
     <div class="wrap">
       <a class="back-link" href={localePath("/#about", lang)}>
         <Icon name="i-arrow" />{t("doctorsPage.back")}
