@@ -3443,7 +3443,7 @@ footer.site.footer-v2 {
   position: relative;
   overflow: hidden;
   margin-top: 40px;
-  padding: 120px 0 28px;
+  padding: 72px 0 28px;
   border-top: none;
   background: var(--bg);
 }
@@ -3452,7 +3452,7 @@ footer.site.footer-v2 {
   left: 0;
   right: 0;
   top: 0;
-  height: var(--footer-img-h, 60%);
+  height: var(--footer-img-h, 30%);
   z-index: 0;
 }
 .footer-bg img {

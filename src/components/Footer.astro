@@ -108,7 +108,11 @@ const year = new Date().getFullYear();
   if (footer && panel) {
     const fit = () => {
       const top = panel.getBoundingClientRect().top - footer.getBoundingClientRect().top;
-      footer.style.setProperty("--footer-img-h", `${Math.round(top + panel.offsetHeight / 2)}px`);
+      // Image ends a quarter of the way down the panel (half the previous height).
+      footer.style.setProperty(
+        "--footer-img-h",
+        `${Math.round((top + panel.offsetHeight / 2) / 2)}px`,
+      );
     };
     fit();
     window.addEventListener("resize", fit, { passive: true });
