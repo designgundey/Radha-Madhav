@@ -8,7 +8,7 @@ export interface TimelineItem {
 
 // The story of Dr. Swapan Kumar Kundu, Pushpalata Gurung, Dr. Subhendu Kundu and the team.
 // Years marked "c." are approximate: confirm dates, names and events with the family
-// before publishing, and replace the stand-in portrait in public/images/dr-kundu.jpg.
+// before publishing.
 export const founder = {
   name: {
     en: "Dr. Swapan Kumar Kundu",
@@ -21,7 +21,7 @@ export const founder = {
     bn: "সহ-প্রতিষ্ঠাতা। পাঁচ দশক ধরে মিরিকের চিকিৎসক",
   } as L,
   photo: "/images/dr-kundu.jpg",
-  photoIsPlaceholder: true,
+  photoIsPlaceholder: false,
   intro: [
     {
       en: "For close to fifty years, one name has been spoken in Mirik whenever someone fell ill: Dr. Swapan Kumar Kundu. Long before the town had the clinics it has today, his door at Krishnanagar was open to tea-garden workers, students, traders and travellers alike.",
@@ -54,7 +54,7 @@ export const cofounder = {
     bn: "সহ-প্রতিষ্ঠাতা। যে হাত কাউন্টার চালাত",
   } as L,
   photo: "/images/pushpalata-gurung.jpg",
-  photoIsPlaceholder: true,
+  photoIsPlaceholder: false,
   intro: [
     {
       en: "Pushpalata Gurung is the reason the hall felt like a home and not a dispensary. She knew every family by name, which child was due a vaccine, and which grandmother would forget her evening tablet unless it was counted into a paper fold for her.",

@@ -2955,7 +2955,7 @@ html[data-lang="bn"] .hero h1 {
   height: 100%;
   object-fit: cover;
   object-position: center 15%;
-  filter: saturate(0.7) sepia(0.15) contrast(1.05);
+  filter: saturate(0.85) contrast(1.03);
 }
 .legacy-portrait::after {
   content: "";

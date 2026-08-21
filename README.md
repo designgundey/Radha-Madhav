@@ -109,7 +109,7 @@ Everything below currently holds a sample/placeholder value. Search each file fo
   Dr. Subhendu Kundu's section, the six-person `team` (replace `[Name]` and `public/images/staff-N.jpg`)
   and the history timeline. Years marked
   `c.` are approximate and the events are written from the brief: confirm every date, name and
-  claim with the family, and replace the stand-in portrait `public/images/dr-kundu.jpg`.
+  claim with the family.
 - **`public/images/logo.svg`** — the brand logo (`logo-light.svg` is the same mark recoloured for
   the dark theme; it's used in the header and footer). `logo-mark.svg` is the peacock mark alone,
   animated as the opening splash in `src/components/Loader.astro`.
