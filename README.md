@@ -24,8 +24,9 @@ see [Content you need to edit](#content-you-need-to-edit) below.
 
 ## Maps
 
-The footer backdrop is the Mirik Lake panorama by Shubh.ch1994 (Wikimedia Commons, CC BY-SA 4.0);
-the credit link in the footer must stay if the photo is used.
+The footer backdrop (`public/images/mirik-lake-panorama.jpg`) is currently a Wikimedia Commons photo
+by Shubh.ch1994 under CC BY-SA 4.0. The on-page credit was removed at the owner's request, so replace
+it with the shop's own photo of Mirik Lake (or restore a visible credit) before going live.
 
 The footer and contact maps use **Mapbox GL** (dark style, pulsing pin, 3D tilt) when
 `PUBLIC_MAPBOX_TOKEN` is set in `.env` (copy `.env.example`; free tier is 50k loads/month). The
