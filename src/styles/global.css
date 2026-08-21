@@ -3479,21 +3479,6 @@ footer.site.footer-v2 {
   inset: 0;
   background: linear-gradient(180deg, transparent 0%, transparent 80%, var(--bg) 100%);
 }
-.footer-ghost {
-  position: absolute;
-  right: -2%;
-  bottom: -6%;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(6rem, 22vw, 20rem);
-  line-height: 1;
-  letter-spacing: -0.04em;
-  text-transform: uppercase;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(140, 220, 196, 0.12);
-  pointer-events: none;
-  user-select: none;
-}
 .footer-v2 .wrap {
   position: relative;
   z-index: 1;
@@ -3527,9 +3512,6 @@ footer.site.footer-v2 {
   }
   .footer-panel {
     padding: 28px 22px 20px;
-  }
-  .footer-ghost {
-    display: none;
   }
 }
 
