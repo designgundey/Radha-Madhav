@@ -245,9 +245,9 @@ export const timeline: TimelineItem[] = [
     year: "Today",
     title: { en: "The next generation", ne: "अर्को पुस्ता", bn: "পরের প্রজন্ম" },
     text: {
-      en: "Four visiting doctors, 4.9 stars on Google and the same promise: genuine medicines, honest advice, in the language you speak.",
-      ne: "चार आउने डाक्टर, गुगलमा ४.९ तारा र उही वाचा: असली औषधि, इमानदार सल्लाह, तपाईंले बोल्ने भाषामा।",
-      bn: "চারজন আগত ডাক্তার, গুগলে ৪.৯ তারা আর সেই একই প্রতিশ্রুতি: আসল ওষুধ, সৎ পরামর্শ, আপনার ভাষায়।",
+      en: "Five visiting doctors, 4.9 stars on Google and the same promise: genuine medicines, honest advice, in the language you speak.",
+      ne: "पाँच आउने डाक्टर, गुगलमा ४.९ तारा र उही वाचा: असली औषधि, इमानदार सल्लाह, तपाईंले बोल्ने भाषामा।",
+      bn: "পাঁচজন আগত ডাক্তার, গুগলে ৪.৯ তারা আর সেই একই প্রতিশ্রুতি: আসল ওষুধ, সৎ পরামর্শ, আপনার ভাষায়।",
     },
   },
 ];

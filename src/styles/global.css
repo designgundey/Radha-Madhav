@@ -3028,18 +3028,9 @@ html[data-lang="bn"] .hero h1 {
   grid-template-columns: repeat(3, 1fr);
   gap: 22px;
 }
-.history-line::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 18px;
-  height: 1px;
-  background: var(--line-strong);
-}
 .history-line li {
   position: relative;
-  padding: 44px 22px 24px;
+  padding: 46px 22px 24px;
   background: var(--surface);
   border: 1px solid var(--line);
   border-radius: var(--radius-m);
@@ -3047,7 +3038,7 @@ html[data-lang="bn"] .hero h1 {
 .history-line li::before {
   content: "";
   position: absolute;
-  top: 12px;
+  top: 18px;
   left: 22px;
   width: 12px;
   height: 12px;
@@ -3057,7 +3048,7 @@ html[data-lang="bn"] .hero h1 {
 }
 .history-year {
   position: absolute;
-  top: 6px;
+  top: 13px;
   left: 44px;
   font-size: 0.72rem;
   letter-spacing: 0.14em;
@@ -3081,9 +3072,6 @@ html[data-lang="bn"] .hero h1 {
 @media (max-width: 760px) {
   .history-line {
     grid-template-columns: 1fr;
-  }
-  .history-line::before {
-    display: none;
   }
   .legacy-years {
     gap: 20px;
