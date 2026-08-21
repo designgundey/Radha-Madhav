@@ -3545,3 +3545,62 @@ footer.site.footer-v2 {
 .medallion-img {
   position: absolute;
 }
+
+/* ---------- Hero headline on phones: keep the two lines (incl. the longest typed phrase) ---------- */
+@media (max-width: 760px) {
+  .hero h1 {
+    font-size: clamp(1.6rem, 7.4vw, 2.3rem);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+    margin-bottom: 22px;
+  }
+  .hero h1 .typed {
+    white-space: nowrap;
+  }
+  html[data-lang="ne"] .hero h1,
+  html[data-lang="bn"] .hero h1 {
+    font-size: clamp(1.5rem, 6.8vw, 2.1rem);
+    line-height: 1.28;
+  }
+}
+@media (max-width: 360px) {
+  .hero h1 {
+    font-size: clamp(1.45rem, 7vw, 1.9rem);
+  }
+}
+
+/* ---------- Narrow-phone guards (no horizontal scroll) ---------- */
+section,
+footer.site {
+  overflow-x: clip;
+}
+@media (max-width: 760px) {
+  .nav-row {
+    gap: 10px;
+  }
+  .nav-actions {
+    gap: 8px;
+  }
+  .brand img {
+    height: 38px;
+    width: auto;
+  }
+  .lang-btn {
+    padding: 0 10px;
+    gap: 6px;
+  }
+  .medallion-ring {
+    inset: -3%;
+  }
+  .medallion-ring.two {
+    inset: -6%;
+  }
+}
+@media (max-width: 360px) {
+  .wrap {
+    padding-inline: 18px;
+  }
+  .lang-btn span {
+    display: none;
+  }
+}
