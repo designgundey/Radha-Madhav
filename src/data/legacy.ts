@@ -103,26 +103,26 @@ export interface StaffMember {
 // Replace "[Name]" and the stand-in photos with the real team.
 export const team: StaffMember[] = [
   {
-    name: "[Name]",
+    name: "Deepika Chettri",
     role: { en: "Registered pharmacist", ne: "दर्ता फार्मासिस्ट", bn: "রেজিস্টার্ড ফার্মাসিস্ট" },
     note: {
       en: "Dispensing and dosage checks",
       ne: "औषधि वितरण र मात्रा जाँच",
       bn: "ওষুধ বিতরণ ও ডোজ যাচাই",
     },
-    photo: "/images/staff-1.jpg",
-    photoIsPlaceholder: true,
+    photo: "/images/deepika-chettri.jpg",
+    photoIsPlaceholder: false,
   },
   {
-    name: "[Name]",
+    name: "Sia Pradhan",
     role: { en: "Counter in-charge", ne: "काउन्टर इन्चार्ज", bn: "কাউন্টার ইন-চার্জ" },
     note: {
       en: "Prescriptions and billing",
       ne: "प्रेस्क्रिप्सन र बिलिङ",
       bn: "প্রেসক্রিপশন ও বিলিং",
     },
-    photo: "/images/staff-2.jpg",
-    photoIsPlaceholder: true,
+    photo: "/images/sia-pradhan.jpg",
+    photoIsPlaceholder: false,
   },
   {
     name: "[Name]",
