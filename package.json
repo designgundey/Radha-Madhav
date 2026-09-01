@@ -1,7 +1,7 @@
 {
   "name": "radhamadhav-medical-hall",
   "version": "0.1.0",
-  "description": "Radhamadhav Medical Hall — pharmacy website (Astro)",
+  "description": "Radhamadhav Medical Hall  pharmacy website (Astro)",
   "scripts": {
     "test": "playwright test",
     "dev": "astro dev",

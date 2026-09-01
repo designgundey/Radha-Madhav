@@ -7,7 +7,7 @@ export interface WikiEntry {
 }
 
 // Nepali health-awareness notes, each readable aloud via the browser's
-// speechSynthesis API. Keep sentences short and simple — they're written
+// speechSynthesis API. Keep sentences short and simple  they're written
 // in the plain register used on public-health posters.
 export const wikiEntries: WikiEntry[] = [
   {

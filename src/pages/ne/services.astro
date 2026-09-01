@@ -3,7 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Icon from "../../components/Icon.astro";
 import { services, moreServices } from "../../data/services";
 import { site } from "../../data/site";
-import { getLang, l, localePath, useT } from "../../i18n";
+import { getLang, l, useT } from "../../i18n";
 
 const lang = getLang(Astro.currentLocale);
 const t = useT(lang);

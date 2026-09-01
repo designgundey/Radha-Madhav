@@ -58,7 +58,7 @@ const t = useT(lang);
 </section>
 
 <script>
-  // Autoplay can be refused (battery saver, background tab) — nudge it and fail quietly to the poster.
+  // Autoplay can be refused (battery saver, background tab)  nudge it and fail quietly to the poster.
   const video = document.getElementById("hero-video") as HTMLVideoElement | null;
   if (video && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     video.muted = true;
@@ -82,7 +82,7 @@ const t = useT(lang);
     let deleting = false;
     let blink = 0;
 
-    // Blink the caret by toggling visibility (no CSS animation — keeps the
+    // Blink the caret by toggling visibility (no CSS animation  keeps the
     // gradient-clipped heading painting correctly).
     setInterval(() => {
       blink ^= 1;

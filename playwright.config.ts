@@ -16,7 +16,7 @@ export default defineConfig({
   },
   webServer: {
     // `astro preview` detaches into a background daemon, which breaks
-    // Playwright's process-liveness check — serve the built dist/ directly
+    // Playwright's process-liveness check  serve the built dist/ directly
     // instead. Run `npm run build` before `npm test` (see CI workflow).
     command: `npx serve dist -l ${port}`,
     url: `http://localhost:${port}`,

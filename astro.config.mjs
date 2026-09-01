@@ -1,6 +1,6 @@
 import { defineConfig } from "astro/config";
 
-// Radhamadhav Medical Hall — static marketing site.
+// Radhamadhav Medical Hall  static marketing site.
 // Deployed via Vercel's git integration (see vercel.json + README).
 export default defineConfig({
   site: "https://radhamadhavmedicalhall.example.com",

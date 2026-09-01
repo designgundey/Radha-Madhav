@@ -1,5 +1,5 @@
 /* =====================================================================
-   Radhamadhav Medical Hall — design system
+   Radhamadhav Medical Hall  design system
    Dark, deep-teal ground with soft atmospheric glows, geometric sans,
    circular photo medallions, glass cards, and reveal-on-scroll motion.
    ===================================================================== */
@@ -87,7 +87,7 @@ body {
   overflow-x: hidden;
 }
 
-/* Atmospheric glows — fixed behind everything, like the reference's
+/* Atmospheric glows  fixed behind everything, like the reference's
    colour-wash that drifts as you scroll. */
 .atmosphere {
   position: fixed;

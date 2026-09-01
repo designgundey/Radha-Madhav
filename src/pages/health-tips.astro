@@ -1,10 +1,9 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import Icon from "../components/Icon.astro";
 import DoctorVideos from "../components/DoctorVideos.astro";
 import HealthWiki from "../components/HealthWiki.astro";
 import { site } from "../data/site";
-import { getLang, localePath, useT } from "../i18n";
+import { getLang, useT } from "../i18n";
 
 const lang = getLang(Astro.currentLocale);
 const t = useT(lang);

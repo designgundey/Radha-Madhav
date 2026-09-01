@@ -1,19 +1,19 @@
 # Radhamadhav Medical Hall
 
-The website for **Radhamadhav Medical Hall**, a neighbourhood pharmacy — built with
+The website for **Radhamadhav Medical Hall**, a neighbourhood pharmacy built with
 [Astro](https://astro.build) as a fully static site. Includes services, a visiting-doctors
 directory, and a Nepali health-awareness wiki with tap-to-listen audio (via the browser's
 `speechSynthesis` API).
 
 All business details (address, phone, doctor names, hours) are **sample placeholders**. Edit
-`src/data/site.ts`, `src/data/doctors.ts`, and `src/data/wiki.ts` before deploying to production —
+`src/data/site.ts`, `src/data/doctors.ts`, and `src/data/wiki.ts` before deploying to production
 see [Content you need to edit](#content-you-need-to-edit) below.
 
 ## Stack
 
-- [Astro](https://astro.build) 7 — static site generator, zero client-side JS framework
+- [Astro](https://astro.build) 7 static site generator, zero client-side JS framework
 - TypeScript (strict) for data and component props
-- Plain CSS with design tokens (`src/styles/global.css`) — dark teal theme built from the brand
+- Plain CSS with design tokens (`src/styles/global.css`) dark teal theme built from the brand
   colours (`#00807A` teal, `#FFA300` orange), glass cards, circular photo medallions, and
   reveal-on-scroll motion (respects `prefers-reduced-motion`)
 - Google Fonts: [Outfit](https://fonts.google.com/specimen/Outfit) for Latin text, Hind for Nepali
@@ -61,7 +61,7 @@ npm run dev       # http://localhost:4321
 | `npm run format:check` | Check formatting without writing                |
 | `npm test`             | Run the Playwright smoke tests against `dist/`  |
 
-Run `npm test` after `npm run build` — the test suite serves the built `dist/` folder rather than
+Run `npm test` after `npm run build` the test suite serves the built `dist/` folder rather than
 starting a dev server. If port 4321 is already in use on your machine, run `PORT=4399 npm test`.
 
 ## Project structure
@@ -69,10 +69,10 @@ starting a dev server. If port 4321 is already in use on your machine, run `PORT
 ```
 src/
   components/     One .astro component per section (Hero, Services, Doctors, HealthWiki, ...)
-  data/           Content as typed data — site.ts, doctors.ts, services.ts, wiki.ts
-  layouts/        BaseLayout.astro — <head>, fonts, header/footer shell
-  pages/          index.astro — assembles the components into the homepage
-  styles/         global.css — design tokens (colors, type) + component styles
+  data/           Content as typed data  site.ts, doctors.ts, services.ts, wiki.ts
+  layouts/        BaseLayout.astro  <head>, fonts, header/footer shell
+  pages/          index.astro  assembles the components into the homepage
+  styles/         global.css  design tokens (colors, type) + component styles
 tests/
   smoke.spec.ts   Playwright checks: page renders, nav works, links point somewhere real
 public/           Static files served as-is (favicon.svg, robots.txt)
@@ -81,7 +81,7 @@ public/           Static files served as-is (favicon.svg, robots.txt)
   videos/cta/     clip-1..7.mp4, the cross-fading montage behind the "Here when you need us" band
 ```
 
-Content lives in `src/data/*.ts`, separate from markup — edit those files rather than hunting
+Content lives in `src/data/*.ts`, separate from markup edit those files rather than hunting
 through components for text to change.
 
 ## Content you need to edit
@@ -89,32 +89,32 @@ through components for text to change.
 Everything below currently holds a sample/placeholder value. Search each file for `[Sample`,
 `[Town]`, or similar bracketed text:
 
-- **`src/data/site.ts`** — email, registration number, working hours (phone/WhatsApp are set). Address,
+- **`src/data/site.ts`** email, registration number, working hours (phone/WhatsApp are set). Address,
   map link/embed, plus code and the Google rating are already filled from the Google Business
-  listing (<https://maps.app.goo.gl/DUPGb1Na16tpNsoB7>) — bump `google.reviewCount` / `rating`
+  listing (<https://maps.app.goo.gl/DUPGb1Na16tpNsoB7>) bump `google.reviewCount` / `rating`
   when they change.
-- **`src/data/videos.ts`** — the doctor video reels. Paste each reel URL into `src`, set `platform`
+- **`src/data/videos.ts`** the doctor video reels. Paste each reel URL into `src`, set `platform`
   (`youtube` embeds inline; `instagram` opens on Instagram; `mp4` plays a file from `public/videos`)
   and set `isPlaceholder: false`.
-- **`src/data/reviews.ts`** — the written Google reviews shown in the Reviews section. Google has
+- **`src/data/reviews.ts`** the written Google reviews shown in the Reviews section. Google has
   no free live feed for a static site, so paste new reviews here by hand (or wire up the Places
   API later).
-- **`src/data/doctors.ts`** — the visiting-doctors directory. Names, specialties and the cabin
+- **`src/data/doctors.ts`** the visiting-doctors directory. Names, specialties and the cabin
   are real; skills, timings and languages are placeholders (`timingsConfirmed: false` shows a
   "timings to be confirmed" badge) and the portraits are stock photos (`photoIsPlaceholder: true`
   shows a "sample photo" badge). Replace `public/images/doctor-N.jpg` with real portraits.
-- **`src/data/services.ts`** — the six service cards, each with an `image` path. Placeholder
-  photos live in `public/images/` (royalty-free Unsplash shots) — replace them with your own.
-- **`src/data/wiki.ts`** — the Nepali health-awareness entries. Written in the plain register
+- **`src/data/services.ts`** the six service cards, each with an `image` path. Placeholder
+  photos live in `public/images/` (royalty-free Unsplash shots) replace them with your own.
+- **`src/data/wiki.ts`** the Nepali health-awareness entries. Written in the plain register
   used on public-health posters; each entry includes an English gloss.
-- **`src/data/gallery.ts`** — the gallery cards shown on `/about/`. Swap the `src` paths for real
+- **`src/data/gallery.ts`** the gallery cards shown on `/about/`. Swap the `src` paths for real
   shots of your storefront, counter, and team.
-- **`src/data/legacy.ts`** — the founders' story (Dr. Swapan Kumar Kundu and Pushpalata Gurung),
+- **`src/data/legacy.ts`** the founders' story (Dr. Swapan Kumar Kundu and Pushpalata Gurung),
   Dr. Subhendu Kundu's section, the six-person `team` (replace `[Name]` and `public/images/staff-N.jpg`)
   and the history timeline. Years marked
   `c.` are approximate and the events are written from the brief: confirm every date, name and
   claim with the family.
-- **`public/images/logo.svg`** — the brand logo (`logo-light.svg` is the same mark recoloured for
+- **`public/images/logo.svg`** the brand logo (`logo-light.svg` is the same mark recoloured for
   the dark theme; it's used in the header and footer). `logo-mark.svg` is the peacock mark alone,
   animated as the opening splash in `src/components/Loader.astro`.
 
@@ -127,7 +127,7 @@ project dashboard to see the numbers.
 
 ## Deployment (Vercel)
 
-This repo is set up for Vercel's git integration — CI does **not** deploy, Vercel does, whenever
+This repo is set up for Vercel's git integration CI does **not** deploy, Vercel does, whenever
 you push.
 
 1. Push this repo to GitHub (or GitLab/Bitbucket).
@@ -136,23 +136,23 @@ you push.
    install command (`npm ci`) explicitly so the config isn't implicit.
 3. Every push to `main` deploys to production; every pull request gets a preview deployment.
 4. If you add environment variables later (see `.env.example`), set them in the Vercel project's
-   **Settings → Environment Variables** — `.env` files are never committed.
+   **Settings → Environment Variables** `.env` files are never committed.
 
-No server/adapter is needed — the site is fully static (`output: "static"` in
+No server/adapter is needed the site is fully static (`output: "static"` in
 `astro.config.mjs`).
 
 ## CI/CD
 
 **`.github/workflows/ci.yml`** runs on every push and pull request against `main`:
 
-1. **Lint & format** — ESLint (zero warnings allowed) and `prettier --check`.
-2. **Typecheck & build** — `astro check` then `astro build`; the `dist/` output is uploaded as a
+1. **Lint & format** ESLint (zero warnings allowed) and `prettier --check`.
+2. **Typecheck & build** `astro check` then `astro build`; the `dist/` output is uploaded as a
    build artifact for 7 days.
-3. **Smoke test** — builds the site, installs Playwright's Chromium, and runs `tests/smoke.spec.ts`
+3. **Smoke test** builds the site, installs Playwright's Chromium, and runs `tests/smoke.spec.ts`
    against the built output. The HTML report is uploaded as an artifact on every run (including
    failures) for 7 days.
 
-Deployment itself is handled by Vercel's own GitHub integration, not by this workflow — see
+Deployment itself is handled by Vercel's own GitHub integration, not by this workflow see
 [Deployment](#deployment-vercel).
 
 **`.github/dependabot.yml`** opens weekly PRs for npm dependency and GitHub Actions updates,
@@ -186,7 +186,7 @@ Run locally with `npm run build && npm test`. In a fresh environment, install Ch
 
 - Respects `prefers-reduced-motion` (disables smooth scrolling and transitions).
 - Skip-to-content link, visible focus states, `aria-label`s on icon-only controls.
-- The Nepali health-wiki "Listen" buttons use the browser's built-in `speechSynthesis` — no
+- The Nepali health-wiki "Listen" buttons use the browser's built-in `speechSynthesis` no
   external API, no audio files to host. Falls back to a default voice (or a visible message) if a
   Nepali voice isn't installed on the visitor's device.
 - Fonts (Fraunces, Hind) load from Google Fonts with `display=swap`; system fonts are the fallback
@@ -194,5 +194,5 @@ Run locally with `npm run build && npm test`. In a fresh environment, install Ch
 
 ## License
 
-Private/unpublished (`"license": "UNLICENSED"` in `package.json`) — this is a bespoke site for
+Private/unpublished (`"license": "UNLICENSED"` in `package.json`) this is a bespoke site for
 Radhamadhav Medical Hall, not an open-source package.
